@@ -1,0 +1,540 @@
+.usermanagement {
+  .mytable {
+    position: relative;
+    float: left;
+    overflow: hidden;
+  }
+  .scroll {
+    width: 35px;
+    overflow-y: auto;
+    top: 52px;
+    _top: 59px !important;
+    position: absolute;
+    right: 0px;
+    z-index: 2;
+    zoom: 1;
+  }
+  .line {
+    border-bottom: 1px dashed;
+  }
+  .title {
+    padding: 10px 10px;
+    line-height: 25px;
+    word-break: break-all;
+  }
+  .title > span {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .dropdiv {
+    display: inline-table;
+    margin-right: 10px;
+    position: relative;
+    z-index: 99;
+
+    > a {
+      > span {
+        padding-right: 13px;
+        margin-left: 13px;
+      }
+    }
+    .dropdown {
+      border: 1px solid #95b3d7;
+      position: absolute;
+      top: 27px;
+      left: 12px;
+      // padding: 0 5px;
+      width: 110px;
+      display: none;
+      background-color: #fff;
+
+      a {
+        color: #000;
+        display: block;
+        padding-left: 10px;
+        line-height: 30px;
+        &:hover {
+          background: #95b3d7;
+        }
+      }
+    }
+    &.open {
+      .setBtn {
+        border-radius: 0px;
+        border-bottom-width: 0px;
+      }
+      .dropdown {
+        display: block;
+      }
+    }
+  }
+  .split {
+    margin-right: 10px;
+  }
+  .tab-admin {
+    height: 23px;
+    line-height: 32px;
+    padding: 10px 10px 10px;
+
+    a.tab {
+      width: 92px;
+      text-align: center;
+      float: left;
+      color: #0c9dde;
+      padding: 0 15px;
+      margin-right: 1px;
+      display: inline;
+      background: #fff;
+    }
+    a.active {
+      border-top: 2px solid  #0c9dde;
+      border-left: 2px solid #0c9dde;
+      border-right: 2px solid #0c9dde;
+      color: #000;
+      font-weight: bold;
+      padding-bottom: 1px;
+    }
+    .tool {
+      margin-top: -5px;
+      > a {
+        margin-right: 15px;
+      }
+      .save-gray > span > span {
+        background-position: 3px -1695px;
+      }
+    }
+  }
+  .tab-main {
+    border: 2px solid #0c9dde;
+    margin: 0 10px;
+    td {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .tab-border {
+    // padding-top: 20px;
+    color: #000;
+    position: relative;
+    zoom: 1;
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      table-layout: fixed;
+
+      .first {
+        padding-left: 1%;
+        width: 13%;
+        text-align: left;
+      }
+      .second {
+        width: 13%;
+        // padding: 0 5px;
+        text-align: left;
+      }
+      .third {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: auto;
+        // padding: 0 5px;
+        text-align: left;
+      }
+      .last {
+        width: 5%;
+        padding-right: 1%;
+      }
+      tr.table-header {
+        height: 50px;
+        border-bottom: 3px solid #95b3d7;
+
+        th {
+          vertical-align: middle;
+          word-break: break-word;
+          &.red {
+            color: red;
+          }
+          &.auto {
+            widht: auto;
+          }
+        }
+      }
+      tr.table-heading {
+        background-color: #dce6f1;
+        // height: 35px;
+        border-bottom: 2px solid #95b3d7;
+        cursor: pointer;
+
+        td {
+          font-weight: bold;
+          padding: 10px;
+          line-height: 10px;
+        }
+      }
+      tr.table-content {
+        height: 30px;
+        border-bottom: 2px solid #95b3d7;
+
+        td {
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+  .basic {
+    font {
+      color: red;
+    }
+    .btn {
+      width: 100px;
+      line-height: 20px;
+      padding: 2px;
+    }
+    .fourth {
+      width: 13%;
+      // padding: 0 5px;
+      text-align: left;
+    }
+    .checkbox {
+      width: 6%;
+      // padding: 0 5px;
+      text-align: center;
+    }
+    .checkbox-w {
+      width: 7.5%;
+      text-align: center;
+    }
+    .button {
+      width: 90px;
+      padding-right: 10px;
+    }
+    .ptime {
+      text-align: center;
+      width: 12%;
+    }
+    .tdbtn {
+      width: 5%;
+      text-align: center;
+    }
+  }
+  .compliance {
+    padding-left: 480px;
+
+     table tr.table-header {
+      height: 65px;
+      th > div:first-child {
+        height: 26px;
+        margin-top: 5px;
+      }
+    }
+
+    .left {
+      zoom: 1;
+      width: 480px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      overflow: hidden;
+      .first {
+        padding-left: 3%;
+        width: 33%;
+      }
+      .second {
+        width: 33%;
+      }
+      .third {
+        width: auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    .right {
+      width: 100%;
+      overflow-y: hidden;
+      overflow-x: auto;
+      position: relative;
+      zoom: 1;
+      .checkbox {
+        width: 100px;
+      }
+      .table-colspan td {
+        width: 90px;
+      }
+    }
+    .table-colspan {
+      // height: 32px;
+      border-bottom: 2px solid #95b3d7;
+
+      td {
+        width: 80px;
+        padding: 10px 5px;
+        background-color: #dce6f1;
+        line-height: 10px;
+        height: 10px;
+
+        &.auto {
+          width: auto;
+        }
+      }
+    }
+    .checkbox {
+      width: 80px;
+      padding: 0;
+      text-align: center;
+    }
+  }
+
+}
+.um-form {
+  input.error {
+    border: 1px solid red;
+  }
+  div.line {
+    line-height: 45px;
+  }
+  input {
+    // border: 1px solid #558ed5;
+    line-height: 27px;
+    width: 280px;
+    padding: 0 2px;
+  }
+  span {
+    display: inline-block;
+    width: 130px;
+    color: #000;
+    padding-left: 20px;
+  }
+  font {
+    color: red;
+    margin-left: 5px;
+  }
+  .select {
+    display: inline;
+    position: relative;
+    overflow: hidden;
+
+    &.error {
+      padding: 0px;
+
+      input {
+        height: 27px;
+        border: 1px solid red;
+      }
+      .drop {
+        border-top: 1px solid red;
+        border-bottom: 1px solid red;
+        border-right: 1px solid red;
+      }
+    }
+    .drop {
+      background: @new-icons 4px -1949px no-repeat;
+      display: inline-block;
+      width: 25px;
+      height: 29px;
+      cursor: pointer;
+      color: #558ed5;
+      font-size: 18px;
+      text-align: center;
+      // border-top: 1px solid #558ed5;
+      // border-bottom: 1px solid #558ed5;
+      // border-right: 1px solid #558ed5;
+      // padding: 2px 2px 1px;
+      // border-left: 1px solid #558ed5;
+      top: 9px;
+      margin-left: -30px;
+      padding-left: 2px;
+      position: relative;
+    }
+    input {
+      font-size: 13px;
+      width: 270px !important;
+      height: 27px !important;
+      padding: 0 2px 0 10px !important;
+    }
+    .sortul {
+      position: relative;
+      background-color: #fff;
+      border: 1px solid #d9d9d9;
+      display: none;
+      left: 0px;
+      // padding: 10px 0;
+      position: absolute;
+      top: 24px;
+      width: 282px;
+      z-index: 2;
+      // border-top-style: none;
+      max-height: 100px;
+      overflow-y: auto;
+
+      a {
+        display: block;
+        color: #000;
+        line-height: 25px;
+        min-height: 25px;
+        padding: 0 10px;
+      }
+      a:hover {
+        background: #dce6f1;
+      }
+    }
+    &.short {
+      .selectinput {
+        width: 140px !important;
+      }
+      .sortul {
+        width: 152px !important;
+      }
+    }
+  }
+
+}
+.dlg-footer {
+  // .btn, .cancelBtn {
+  //   width: 90px;
+  //   line-height: 15px;
+  // }
+  .plink {
+    padding-top: 10px;
+  }
+  .password {
+    color: #558ed5;
+    text-decoration: underline;
+    font-weight: 400;
+  }
+}
+.dlg-container {
+  .description {
+    position: relative;
+    line-height: 28px;
+    // top: 30px;
+  }
+  // .btn, .cancelBtn {
+  //   line-height: 15px;
+  // }
+  .plink {
+    padding-top: 10px;
+  }
+  .password {
+    color: #558ed5;
+    text-decoration: underline;
+    font-weight: 400;
+  }
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .tool {
+    text-align: right;
+    margin: 0 5px 10px 0;
+  }
+  .tablediv {
+    max-height: 300px;
+    border: 1px solid #a6a6a6;
+    border-top: none;
+    overflow: auto;
+    margin: 10px 0 5px 0;
+
+  }
+  .unittable, .emailtable {
+    table-layout: fixed;
+    word-break: break-all;
+    border-collapse: collapse;
+    // border: 1px solid #a6a6a6;
+
+    tr.table-header {
+      // height: 28px;
+      line-height: 28px;
+      background-color: #0070c0;
+      color: #fff;
+    }
+
+    th {
+      vertical-align: middle;
+      font-weight: initial;
+      font-size: 14px;
+      border: 1px solid #a6a6a6;
+      padding: 0px 10px;
+    }
+    .table-content {
+      // height: 28px;
+      line-height: 18px;
+      td {
+        vertical-align: middle;
+        border: 1px solid #a6a6a6;
+        color: #000;
+        padding: 0 10px;
+        text-align: center;
+
+        a {
+          // color: #0070c0;
+          font-weight: bold;
+        }
+      }
+      .title {
+        text-align: left;
+        font-size: 14px;
+        border-left: 0px;
+        font-weight: initial;
+      }
+      .empty {
+        border: 0px;
+        border-bottom: 1px solid #a6a6a6;
+        width: 5px;
+        padding: 0px 5px;
+      }
+      &.unit1 td {
+        background-color: #dce6f1;
+      }
+      &.unit2 td:first-child {
+        padding-left: 20px;
+      }
+      &.unit3 td:first-child {
+        padding-left: 30px;
+      }
+    }
+    tr:last-child td{
+      border-bottom: none;
+    }
+    tr td:first-child {
+      border-left: none;
+    }
+  }
+  .unittable {
+    .table-content td, .table-header th {
+      border: none;
+    }
+    .table-header, .table-content {
+      border-bottom: 1px solid #a6a6a6;
+    }
+    .first {
+      text-align: left;
+    }
+    th.add {
+      width: 130px;
+      padding: 0;
+    }
+    th.edit,th.del {
+      width: 30px;
+      padding: 0;
+    }
+  }
+  .emailtable {
+    .first {
+      width: 60px;
+    }
+    .second {
+      width: 200px;
+    }
+    .third {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    };
+
+  }
+}
+    .um-upload{
+      input{
+        width: 300px;
+      }
+    }

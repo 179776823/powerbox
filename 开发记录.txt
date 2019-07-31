@@ -1,0 +1,18 @@
+制作开机自启动命令执行thinkphp中workman 的命令，使用tcp协议
+1、在/etc/init.d/下新建phpstart.sh
+
+2、phpstart.sh文件内容
+
+#！/bin/bash
+
+/usr/bin/php /home/vigia/www/datacenter/think worker:server -d
+
+3、添加可执行权限chmod +x /etc/init.d/phpstart.sh
+
+4、添加到开机启动脚本中：/etc/rc.loacl中
+
+在 exit 0上一行添加
+
+/etc/init.d/phpstart.sh
+
+5、开机启动即可 

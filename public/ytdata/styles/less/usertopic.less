@@ -1,0 +1,130 @@
+html{
+  color: red;
+}
+
+.usertopic {
+  width: 100%;
+  font-size: 16px;
+  color: #009ddb;
+  // padding: 20px 10px;
+    // float: left;
+  .usertopic-title {
+    height: 50px;
+    background: @bg-nav;
+    // width: 98%;
+    padding-left: 8px;
+    > span {
+      line-height: 50px;
+      font-size: 18px;
+      padding-left: 21px;
+      color: black;
+    }
+    .buttons {
+      float: right;
+      line-height: 50px;
+      padding-right: 25px;
+      .first{
+          margin-right: 20px;
+      }
+    }
+  }
+  .content {
+    padding: 0 40px;
+    .usertopic-list{
+      .usertopic{
+        margin: 20px 0 20px 0;
+        .title {
+          width: 100%;
+            float: left;
+            font-size: 15px;
+            border-left: 10px solid @title-border;
+            background: @bg-title;
+            box-shadow: 0px 1px 0px 0px rgba(0,0,0,0.10);
+            > span {
+              padding-left: 8px;
+              line-height: 38px;
+            }
+            div, > a {
+              float: right;
+            }
+            > a {
+              margin-top: 7px;
+            }
+            .toggle {
+              padding: 0 10px;
+              a {
+                  line-height: 38px;
+                  height: 38px;
+                  width: 38px;
+                  display: inline-block;
+              }
+            }
+        }
+        .body{
+          width: 100%;
+          float: left;
+          background-color: white;
+          ul{
+            margin-top: 5px;
+            // background-color: white;
+            li{
+              height: 30px;
+              float: left;
+              span{
+                width: 100%;
+                line-height: 30px;
+                cursor: pointer;
+              }
+            }
+            .record-title{
+              width: 85%;
+              padding-left: 20px;
+              font-size: 12px;
+            }
+            .record-edit{
+              width: 4%;
+              span{
+                height: 100%;
+                display: inline-block;
+                background: @icons left -1596px no-repeat;
+              }
+            }
+            .record-del{
+              width: 4%;
+              span{
+                height: 100%;
+                display: inline-block;
+                background: @icons left -897px no-repeat;
+              }            
+              }
+
+          }
+        }
+      }
+    }
+  }
+}
+.doc-dlg{
+    //   .btn-no-sort{
+    //   font-size: 12px;
+    //   text-decoration: none;
+    //   height: 28px;
+    //   line-height: 28px;
+    //   display: inline-block;
+    //   margin: 0 10px 0 0;
+    //   background: url(../../images/new_button_bg.png) left -522px no-repeat;
+    //   span{
+    //     background: url(../../images/new_button_bg.png) right -522px no-repeat;
+    //     display: inline-block;
+    //     padding-right: 10px;
+    //     margin-left: 13px;
+    //     margin-right: -13px;
+    //     span{
+    //       color: #c0c1c4;
+    //           background: url(../../images/new_icons.png) 0 -200px no-repeat;
+    //           display: inline-block;
+    // padding: 0 10px 0 20px;
+    //     }
+    //   }
+    // }
+}

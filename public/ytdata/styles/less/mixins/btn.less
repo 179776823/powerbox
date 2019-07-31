@@ -1,0 +1,74 @@
+.btn(@color: #009ddb, @width: auto, @padding: 7px 20px) {
+  color: #fff;
+  width: @width;
+  text-align: center;
+  min-width: 40px;
+  padding: @padding;
+  background: @color;
+  display: inline-block;
+  &:hover {
+      background: darken(@color, 10%);
+      color: #fff;
+  }
+  &.active {
+      background: dark(@color, 10%);
+  }
+}
+
+.doc-btn(@size: 28px, @bg-pos: 0px, @bg-hover-pos: -30px, @silde-margin: 13px, @pad-right: 10px, @pad-left:20px, @pad-right-2: 10px) {
+  font-size: 12px;
+  text-decoration: none;
+  height: @size;
+  line-height: @size;
+  display: inline-block;
+  margin: 0 10px 0 0;
+  background: @new-button-bg left @bg-pos no-repeat;
+  > span {
+    background: @new-button-bg right @bg-pos no-repeat;
+    display: inline-block;
+    padding-right: @pad-right-2;
+    margin-left: @silde-margin;
+    margin-right: -@silde-margin;
+    line-height: inherit;
+    > span {
+      display: inline-block;
+      padding: 0 @pad-right 0 @pad-left;
+      line-height: inherit;
+    }
+  }
+  &:hover {
+    color: #fff;
+    background: @new-button-bg left @bg-hover-pos no-repeat;
+    > span {
+      background: @new-button-bg right @bg-hover-pos no-repeat;
+    }
+  }
+}
+
+.doc-btn-n(@size: 28px, @bg-pos: 0px, @bg-pos-r: 0px, @bg-hover-pos: -29px, @bg-hover-pos-r: -29px, @silde-margin: 13px, @pad-right: 10px, @pad-left:20px) {
+  font-size: 12px;
+  text-decoration: none;
+  height: @size;
+  line-height: @size;
+  display: inline-block;
+  margin: 0 10px 0 0;
+  background: @new-button-bg left @bg-pos no-repeat;
+  > span {
+    background: @new-button-bg right @bg-pos-r no-repeat;
+    display: inline-block;
+    padding-right: 10px;
+    margin-left: @silde-margin;
+    margin-right: -@silde-margin;
+    > span {
+      display: inline-block;
+      padding: 0 @pad-right 0 @pad-left;
+    }
+  }
+  &:hover {
+    color: #fff;
+    background: @new-button-bg left @bg-hover-pos no-repeat;
+    > span {
+      background: @new-button-bg right @bg-hover-pos-r no-repeat;
+    }
+  }
+}

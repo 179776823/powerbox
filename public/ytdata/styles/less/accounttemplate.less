@@ -1,0 +1,823 @@
+
+@cont-left-hover: #00b0f0;
+@cont-left-defaut: #a6a6a6;
+@jol4-new-img: url(../../images/jol4_new.png);
+@new-button-bg: url(../../images/new_button_bg.png?v=2018);
+@new-icons-img: url(../../images/new_icons.png?v=2018);
+@new-icons-active-img: url(../../images/new_icons_active.png);
+ul.level-second.hide,
+ul.level-childs.hide{
+  display: none;
+}
+
+.footer{
+    overflow: hidden;
+}
+.clearfix:after {
+    display: block;
+    clear: both;
+    content: "";
+    visibility: hidden;
+    height: 0;
+}
+.clearfix {
+    zoom: 1;
+}
+.custom-main{
+    font-size: 13px;
+    
+    .custom-placeHoder{
+        display: none;
+        height: 50px;
+        width: 100%;
+    }
+    .custom-header{
+        min-height: 50px;
+        line-height: 50px;
+        background: #ececed;
+        z-index: 100;
+
+        .the-page-nav{    
+            padding-left: 8px;
+
+            .the-page-title{
+                line-height: 50px;
+                font-size: 18px;
+                padding-left: 21px;
+                color: #000;
+                display: inline-block;
+                padding-right: 32px;
+                position: relative;
+                i{
+                    background: @jol4-new-img left -2907px no-repeat;
+                    width: 20px;
+                    height: 23px;
+                    position: absolute;
+                    right: 0;
+                    top: 2px;
+                    cursor: pointer;
+                }
+            }
+            div{
+                float: right;
+                line-height: 50px;
+                padding-right: 25px;
+
+                .common-styles{
+                    font-size: 12px;
+                    text-decoration: none;
+                    height: 28px;
+                    line-height: 28px;
+                    display: inline-block;
+                    margin: 0 10px 0 0;
+                    background: @new-button-bg left 0 no-repeat;
+    
+                    >span{
+                        background: @new-button-bg right 0 no-repeat;
+                        display: inline-block;
+                        padding-right: 10px;
+                        margin-left: 13px;
+                        margin-right: -13px;
+                        line-height: inherit;
+
+                        >span{
+                            display: inline-block;
+                            line-height: inherit;
+                        }
+                    }
+                }
+                .creact-btn{
+                    >span{
+                        >span{
+                            padding: 0 10px 0 20px;
+                            background: @jol4-new-img left -2907px no-repeat;
+                        }
+                    }
+                }
+                .edit-btn{
+                    >span{
+                        >span{
+                            padding: 0 10px 0 24px;
+                            background: @new-icons-img left -94px no-repeat;
+                        }
+                    }
+                }
+                .creact-btn:hover{
+                    color: #fff;
+                    background: @new-button-bg left -29px no-repeat;
+
+                    >span{
+                        background: @new-button-bg right -29px no-repeat;
+
+                        >span{
+                            background: @jol4-new-img 0 -2932px no-repeat;
+                        }
+                    }
+                }
+                .edit-btn:hover{
+                    color: #fff;
+                    background: @new-button-bg left -29px no-repeat;
+
+                    >span{
+                        background: @new-button-bg right -29px no-repeat;
+
+                        >span{
+                            background: @new-icons-active-img 0 -94px no-repeat;
+                        }
+                    }
+                }
+                .editBtns{
+                    margin-left: 10px;
+                }
+            }
+            
+        }
+    }
+
+    .custom-content{
+        position: relative;
+        
+        .custom-content-box{
+            position: relative;
+            margin: 22px 16px 10px 16px;
+
+            .content-left{
+                width: 250px;
+                float: left;
+
+                dl{
+
+                    dt,dd{
+                        color: #fff;
+                        text-align: center;
+                        >span{
+                            min-height: 30px;
+                            line-height: 30px;
+                            display: block;
+                            padding: 10px 5px;
+                        }
+                    }
+                    dt{
+                        >span{
+                            background: #f60000;
+                        }
+                    }
+                    dd{
+                        margin-top: 5px;
+
+                        >span{
+                            background: @cont-left-defaut;
+                            cursor: pointer;
+                        }
+                        >span.cur{
+                            background: @cont-left-hover;
+                        }
+                        >span:not(.cur):hover{
+                            background: #77b800;
+                        }
+                        ul{
+                            background: #deebf7;
+                            border: 1px solid @cont-left-hover;
+                            border-top: none;
+                            padding: 3px 8px 8px;
+                            display: none;
+                            
+                            li{
+                                min-height: 35px;
+                                line-height: 35px;
+                                background: @cont-left-defaut;
+                                text-align: center;
+                                cursor: pointer;
+                                margin-top: 5px;
+
+                                >a{
+                                    color: #fff;
+                                    display: block;
+                                    padding: 10px 5px;
+                                    line-height: 17px;
+                                }
+                            }
+                            li:hover{
+                                background: #77b800;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .content-right{
+                margin-left: 295px;
+                // overflow: hidden;
+
+                .result-list{
+                    dl{
+                        margin-bottom: 30px;
+                        
+                        dt{
+                            height: 40px;
+                            line-height: 40px;
+                            border-left: 10px solid #ed1c24;
+                            background: #f5f5f5;
+                            padding-left: 12px;
+                            font-weight: 600;
+                            position: relative;
+
+                            i{
+                                position: absolute;
+                                right: 5px;
+                                top: 7px;
+                                width: 38px;
+                                height: 25px;
+                                background: @new-icons-img 1px -499px no-repeat;
+                                cursor: pointer;
+                            }
+                            i.close{
+                                background: @new-icons-active-img 1px -500px no-repeat;
+                            }
+                        }
+                        dd{
+                            margin: 10px 30px 10px 20px;
+
+                            .cont-header{
+                                height: 30px;
+                                line-height: 30px;
+                                border-bottom: 2px solid #ed1c24;
+
+                                .list-right{
+                                    span{
+                                        margin-left: 5px;
+                                    }
+                                }
+                            }
+                            .cont-content{
+                                margin-top: 5px;
+                                li{
+                                    border-bottom: 1px solid #e7e6e6;
+                                    font-size: 12px;
+                                    height: auto;
+                                    position: relative;
+
+                                    .list-items{
+                                        min-height: 30px;
+                                        line-height: 30px;
+                                        overflow: hidden;
+
+                                        .list-title{
+                                            position: relative;
+                                            padding-right: 86px;
+                                            padding-left: 20px;
+                                            margin-left: 8px;
+                                            line-height: 22px;
+                                            padding-top: 4px;
+                                            padding-bottom: 4px;
+    
+                                            .spot{
+                                                font-size: 18px;
+                                                position: absolute;
+                                                left: 0;
+                                                top: 0px;
+                                                color: #2e75b6;
+                                                line-height: 30px;
+                                            }
+    
+                                            .title{
+                                                color: #2e75b6;
+                                            }
+                                            .title:hover{
+                                                color: #77b800;
+                                            }
+    
+                                            .relation-icon{
+                                                background-image: @jol4-new-img;
+                                                background-position: 0 -3017px;
+                                                margin-left: 10px;
+                                                width: 16px;
+                                                height: 16px;
+                                                display: inline-block;
+                                                vertical-align: middle;
+    
+                                            }
+                                            .news-icon{
+                                                background: #f00;
+                                                text-align: center;
+                                                margin-left: 10px;
+                                                width: 39px;
+                                                height: 16px;
+                                                display: inline-block;
+                                                line-height: 14px;
+                                                font-style: normal;
+                                                color: #fff;
+                                                border-radius: 4px;
+                                                cursor: default;
+                                                // vertical-align: middle;
+                                            }
+                                            .update-icon{
+                                                background: @new-button-bg left -142px no-repeat;
+                                                position: absolute;
+                                                height: 25px;
+                                                line-height: 25px;
+                                                width: 80px;
+                                                right: 2px;
+                                                top: 3px;
+    
+                                                >span{
+                                                    background: @new-button-bg right -142px no-repeat;
+                                                    display: inline-block;
+                                                    padding-right: 10px;
+                                                    margin-left: 13px;
+                                                    margin-right: -13px;
+                                                    line-height: inherit;
+                                                    >span{
+                                                        padding: 0 0px 0 20px;
+                                                        background: @new-icons-img 0 -646px no-repeat;
+                                                        font-size: 12px;
+                                                        display: inline-block;
+                                                        color: #ed1c24;
+                                                    }
+                                                }
+                                                
+                                            }
+                                        }
+                                        .list-tools{
+                                            
+                                            >*.left{
+                                                float: left;
+                                            }
+    
+                                            .date{
+                                                width: 62px;
+                                                min-height: 1px;
+                                            }
+                                            .tools-public{
+                                                color: #fff;
+                                                display: inline-block;
+                                                width: 50px;
+                                                height:20px;
+                                                line-height: 20px;
+                                                text-align: center;
+                                                margin-left: 24px;
+                                                margin-top: 6px;
+    
+                                                i{
+                                                    display: block;
+                                                    font-style: normal;
+                                                }
+    
+                                                .public{
+                                                    background: #00e266;
+                                                    display: none;
+                                                    // cursor: pointer;
+                                                }
+                                                .no-public{
+                                                    background: #afabab;
+                                                    display: block;
+                                                }
+                                            }
+                                            .tools-public.opened{
+                                                .public{
+                                                    background: #00e266;
+                                                    display: block;
+                                                }
+                                                .no-public{
+                                                    background: #afabab;
+                                                    display: none;
+                                                }
+                                            }
+                                            
+                                        }
+                                    }
+                                    .settings{
+                                        cursor: pointer;
+                                        margin-left: 12px;
+                                        position: absolute;
+                                        width: 20px;
+                                        height: 28px;
+                                        right: 4px;
+                                        top: 3px;
+
+                                        >b{
+                                            background: @new-icons-img 0 -1211px no-repeat;
+                                            margin-top: 2px;
+                                            width: 100%;
+                                            height: 22px;
+                                            display: inline-block;
+                                        }
+
+                                        .setting-box{
+                                            width: 218px;
+                                            position: absolute;
+                                            right: -6px;
+                                            top: 27px;
+                                            border: 1px solid #5b9bd5;
+                                            z-index: 10;
+                                            background: #fff;
+                                            text-align: left;
+                                            display: none;
+
+                                            div{
+                                                height: 30px;
+                                                line-height: 30px;
+                                                
+                                                a{
+                                                    display: block;
+                                                    padding: 0 5px;
+                                                }
+                                            }
+                                            div.firsts{
+                                                border-bottom: 1px solid #5b9bd5; 
+                                            }
+                                            >div:hover{
+                                                background: #5b9bd5;
+
+                                                a{
+                                                    color: #fff;
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    .settings:hover{
+                                        .setting-box{
+                                            display: block;
+                                        }
+                                    }
+                                }
+                            }
+                            .list-left{
+                                margin-right: 200px;
+                                margin-left: 5px;
+                            }
+                            .list-right{
+                                float: right;
+                                width: 174px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.dlg-wrapper.new-doc-dlg{
+    background: #f0f0f0;
+    box-shadow: 4px 4px 5px rgba(0,0,0,.26);
+    border-radius: 4px;
+
+    .dlg-header{
+        background: none;
+
+        *{
+            color: #009ddb;
+        }
+        .icon-close-blue{
+            background-image: url(../../images/jol4_new.png);
+            background-position: 100% -1183px;
+            padding-right: 16px;
+            right: 10px;
+        }
+    }
+
+    .dlg-container{
+        background: none;
+        border: none;
+
+        .tool{
+            margin-right: 35px;
+        }
+
+        .tablediv{
+            border: none;
+            border-top: 1px solid #d2d2d2;
+            border-bottom: 1px solid #d2d2d2;
+            overflow-y: scroll;
+            // max-height: 278px;
+            max-height: 350px;
+        }
+        .um-form{
+            input[type=text]{
+                height: 27px;
+            }
+        }
+        
+        
+        // .unittable{
+        //     margin-top: 5px;
+        //     margin-bottom: 5px;
+
+        //     .table-content{
+        //         border-bottom: 4px solid #f0f0f0;
+        //         line-height: 30px;
+        //         background: #fff;
+        //         td{
+        //             padding:0;
+        //             // line-height: 24px;
+
+        //             >div{
+        //                 display: block;
+        //                 padding: 0 10px;
+        //                 height: 100%;
+        //                 background: #fff;
+        //                 font-weight: normal;
+
+        //                 .doc-btn-s{
+        //                     width: 107px;
+        //                 }
+        //                 a{
+        //                     font-weight: normal;
+        //                 }
+                        
+        //                 >span{
+        //                     display: block;
+        //                     padding-left: 12px;
+        //                 }
+        //                 .icon-new-del{
+        //                     background-position: 0 -900px;
+        //                     height: 22px;
+        //                 }
+        //                 .icon-new-del:hover{
+        //                     background-position: 0 -925px;
+        //                 }
+        //             }
+                    
+        //         }
+        //         td.second{
+        //             width: 30px;
+        //             div{
+        //                 a{
+        //                     position: relative;
+        //                     top: 6px;
+        //                 }
+        //             }
+        //         }
+        //         td.three{
+        //             width: 30px;
+        //             div{
+        //                 a{
+        //                     position: relative;
+        //                     top: 3px;
+        //                 }
+        //             }
+        //         }
+        //         td.last{
+        //             width: 152px;
+        //         }
+        //     }
+        //     .table-content.unit1{
+        //         td{
+        //             background: none;
+        //         }
+        //         td:first-child{
+        //             div{
+        //                 padding-left: 0;
+        //                 span{
+        //                     border-left: 8px solid #c9101a;
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     .table-content.unit2 {
+        //         td:first-child{
+        //             padding-left: 15px;
+        //             position: relative;
+        //             div{
+        //                 padding-left: 0;
+        //                 span{
+        //                     border-left: 8px solid #ed1c24;
+        //                 }
+        //             }
+        //             >i{
+        //                 position: absolute;
+        //                 height: 100%;
+        //                 width: 15px;
+        //                 left: 0;
+        //                 top: 0;
+        //                 background: #f0f0f0;
+        //             }
+        //         }
+        //     }
+        //     .table-content.unit3 {
+        //         td:first-child{
+        //             padding-left: 30px;
+        //             position: relative;
+        //             div{
+        //                 padding-left: 0;
+        //                 span{
+        //                     border-left: 8px solid #ff6f6f;
+        //                 }
+        //             }
+        //             >i{
+        //                 position: absolute;
+        //                 height: 100%;
+        //                 width: 30px;
+        //                 left: 0;
+        //                 top: 0;
+        //                 background: #f0f0f0;
+        //             }
+        //         }
+        //     }
+
+        // }
+
+        .unittable{
+            color: #000;
+            ul{
+                position: relative;
+                li{
+                    position: relative;    
+                    line-height: 30px;
+                    min-height: 30px;
+                    font-size: 14px;
+
+                    .first-child-list{
+                        border-left: 8px solid #c9101a
+                    }
+
+                    .second-child-list{
+                        border-left: 8px solid #ed1c24
+                    }
+
+                    .three-child-list{
+                        border-left: 8px solid #ff6f6f
+                    }
+
+                    .level-second, .level-childs{
+                        margin-left: 15px;
+                    }
+
+                    .list-title-box{
+                        margin: 5px 0;
+                        padding-left: 12px;
+                        background: #fff;
+
+                        .list-title-text{
+                            // float: left;
+                            // width: 100%;
+                            margin-right: 268px;
+                        }
+                        .list-title-tools{
+                            float: right;
+                            width: 328px;
+
+                            dl{
+
+                                dd{
+                                    float: left;
+                                    width: 10px;
+                                    padding: 0 10px;
+                                    height: 30px;
+                                    background: #fff;
+                                    
+                                    >a{
+                                        position: relative;
+                                        top: 4px;
+                                    }
+                                    >.icon-new-del{
+                                        top: 4px;
+                                    }
+                                    .icon-new-del{
+                                        background-position: 0 -900px;
+                                        height: 22px;
+                                    }
+                                    .icon-new-del:hover{
+                                        background-position: 0 -925px;
+                                    }
+                                }
+                                dd.one{
+                                    position: relative;
+                                    width: 38px;
+
+                                    .select-list-btn{
+                                        position: absolute;
+                                        right: 5px;
+                                        top: 2px;
+                                        width: 38px;
+                                        height: 25px;
+                                        background: url(../../images/new_icons.png?v=2018) 1px -499px no-repeat;
+                                        cursor: pointer;
+                                    }
+                                    .select-list-btn.close{
+                                        background: url(../../images/new_icons_active.png) 1px -500px no-repeat;
+                                    }
+                                }
+                                dd.second{
+                                    position: relative;
+                                    .icon-new-edit{
+                                        position: absolute;
+                                        left: 8px;
+                                        top: 7px;
+                                    }
+                                }
+                                dd.last{
+                                    width: 136px;
+                                    padding: 0 5px;
+                                    >div{
+                                        display: block;
+                                        padding: 0 10px;
+                                        height: 100%;
+                                        background: #fff;
+                                        font-weight: 400;
+
+                                        .doc-btn-s{
+                                            font-size: 12px;
+                                            text-decoration: none;
+                                            height: 24px;
+                                            line-height: 24px;
+                                            display: inline-block;
+                                            margin: 0 10px 0 0;
+                                            background: url(../../images/new_button_bg.png?v=1526022717510?v=2018) left -90px no-repeat;
+                                            font-weight: 400;
+                                            width: 107px;
+                                            
+                                            >span{
+                                                background: url(../../images/new_button_bg.png?v=1526022717510?v=2018) right -90px no-repeat;
+                                                display: inline-block;
+                                                padding-right: 10px;
+                                                margin-left: 10px;
+                                                margin-right: -10px;
+                                                line-height: inherit;
+
+                                                >span{
+                                                    display: inline-block;
+                                                    padding: 0 5px 0 20px;
+                                                    line-height: inherit;
+                                                    background: url(../../images/new_icons.png?v=1526022717509) 0 -814px no-repeat;
+                                                }
+                                            }
+                                        }
+                                        .doc-btn-s:hover{
+                                            color: #fff;
+                                            background: url(../../images/new_button_bg.png?v=1526022717510?v=2018) left -116px no-repeat;
+
+                                            >span{
+                                                background: url(../../images/new_button_bg.png?v=1526022717510?v=2018) right -116px no-repeat;
+
+                                                >span{
+                                                    background: url(../../images/new_icons_active.png?v=1526022717510) 0 -814px no-repeat;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .dlg-footer{
+        background: none;
+        .drop-down-btn:hover{
+            >ul.menu-list{
+                display: block;
+            }
+        }
+        .drop-down-btn{
+            position: relative;
+            .menu-list{
+                left: 0;
+                top: 25px;
+                width: 100%;
+                text-align: left;
+            }
+        }
+
+        .doc-btn-s{
+            .select-icon{
+                padding-left: 0;
+            }
+        }
+        .cancelBtn{
+            >span{
+                >span{
+                    // background: url(../../images/new_icons.png) 0 -1724px no-repeat;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,260 @@
+﻿.todolist {
+  .content {
+    padding: 0 40px;
+  }
+  .todo-list{
+    background: @bg-partial;
+    padding-top: 20px;
+     .todo-module{
+       ul{
+         li:hover{
+           cursor: pointer;
+         }
+       }
+     }
+
+  .pagination {
+    border:0px;
+    padding: 10px;
+    >div{
+      display:inline;
+      margin-left: 20px;
+      >a{
+        text-align: center;
+        vertical-align: middle;
+        &.on{
+          color:#ccc;
+        }
+      }
+    }
+
+    .arrowl{
+      background: url(../../images/jol4_new.png?v=1461290902388) left -1398px no-repeat;
+      width:16px;
+      height:16px;
+      display:inline-block;
+      &.off{
+         background-position: 0 -1373px;
+      }
+    }
+    .arrowr{
+      background: url(../../images/jol4_new.png?v=1461290902388) left -1167px no-repeat;
+      width:16px;
+      height:16px;
+      display:inline-block;
+      &.off{
+         background-position: 0 -1142px;
+      }
+    }
+  }
+  }
+
+    .todo-moudle{
+        ul{
+            border-left: 10px solid @bg-title;
+            border-bottom: 1px solid #dfdfdf;
+            background: @bg-title;
+            box-shadow: 0px 1px 0px 0px rgba(0,0,0,0.10);
+            font-size: 15px;
+            font-weight:bold;
+            cursor:pointer;
+            li{
+              display:inline-block;
+              line-height: 38px;
+              *float: left;
+
+              >span{
+                  white-space:nowrap;
+              }
+              &.asc{
+                  background: url(../../images/jol4_new.png) right -2875px no-repeat;
+              }
+              &.desc{
+                  background: url(../../images/jol4_new.png) right -2853px no-repeat;
+              }
+              &.title{
+                width:34%;
+                border-right: 1px solid #cfcfcf;
+                > span{
+                  padding-top:1px;
+                }
+              }
+              // &.big{
+              //   width:20%;
+              // }
+              // &.middle{
+              //   width:16%;
+              // }
+              // &.small{
+              //   width:13%;
+              // }
+              &.name{
+                width: 223px;
+                border-right: 1px solid #cfcfcf;
+                >span{
+                  // background: @new-icons left -1272px no-repeat;
+                  // padding-left:20px;
+                }
+              }
+              &.createtime{
+                width: 102px;
+                border-right: 1px solid #cfcfcf;
+                >span{
+                  // background: @new-icons left -1058px no-repeat;
+                  // padding-left:20px;
+                }
+              }
+              &.expiretime{
+                width: 102px;
+                border-right: 1px solid #cfcfcf;
+                >span{
+                  // background: @new-icons left -1058px no-repeat;
+                  // padding-left:20px;
+                }
+              }
+              &.state{
+                width:72px;
+                  >span{
+                  // background: @new-icons left -1184px no-repeat;
+                  // padding-left:20px;
+                }
+              }
+              &.status{
+                width:42px;
+                border-right: 1px solid #cfcfcf;
+                text-align: center;
+                  >span{
+                  background: @new-icons left -1332px no-repeat;
+                  padding-left:20px;
+                }
+              }
+
+            }
+        }
+      }
+
+
+   .todo-content{
+    background: @bg-partial;
+    .body{
+      font-size: 12px;
+      color: @font-partial-body;
+      padding: 12px 10px;
+      > div {
+        background: #F6F6F6;
+        // box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.09);
+        padding: 10px 40px 15px 20px;
+        margin-bottom: 20px;
+      }
+      .content{
+          padding:2px;
+      }
+      .task-todolist{
+        background: #F6F6F6;
+        padding:2px;
+        ul{
+            background: #f5f5f5;
+            height: 38px;
+            line-height: 38px;
+            border-left:0px;
+            // display: block;
+          li{
+            display:inline-block;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            vertical-align: middle;
+            text-align: left;
+            &.title{
+              width: 34%;
+              color:#009ddb;
+              padding-left: 2px;
+            }
+            &.lastname{
+              width:200px;
+              background: @new-icons 2px -1290px no-repeat;
+              padding-left: 22px;
+              border-left: 1px solid #cfcfcf;
+              > .title-btn{
+                >span{
+                  >span{
+                        padding: 0 88px 0 5px;
+                  }
+                }
+              }
+            }
+            &.createtime{
+                width: 100px;
+                border-left: 1px solid #cfcfcf;
+                padding-left: 2px;
+            }
+            &.expiretime{
+                width: 100px;
+                border-left: 1px solid #cfcfcf;
+                padding-left: 2px;
+            }
+            &.condition{
+              width:70px;
+              font-size:12px;
+              text-align:left;
+              border-left: 1px solid #cfcfcf;
+              padding-left: 2px;
+            }
+            &.status{
+              width:45px;
+              border-left: 1px solid #cfcfcf;
+              padding-left: 2px;
+              >span{
+                background: @new-icons left -1368px no-repeat;
+                padding-left: 17px;
+                padding-bottom: 10px;
+                margin-left: 10px;
+              }
+              .nodata{
+                 background: @new-icons left -1625px no-repeat;
+              }
+            }
+            &.progress{
+              width:14%;
+            }
+            &.condition{
+              .unopened{
+                color:#ed1c24;
+              }
+              .inprogress{
+                color:#77b800;
+              }
+              .reported{
+                color:#009ddb;
+              }
+              .rejected{
+                color:#8f2b8c;
+              }
+              .overdue{
+                color:#8f2b8c;
+              }
+            }
+
+          }
+        }
+      }
+
+      .task-content{
+       padding:0px;
+       background: #F6F6F6;
+       ul{
+          background: #ffffff;
+          padding: 0;
+          border: 1px solid #cfcfcf;
+          box-shadow: 0px 0px 0px 0px;
+          color:#000;
+          font-weight: normal;
+       }
+      }
+    }
+   }
+    .hidden{
+      display: none !important;
+    }
+
+}

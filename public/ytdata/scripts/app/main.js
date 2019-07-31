@@ -1,0 +1,1 @@
+define("app/main",[],function(){seajs.use(JOL.root+"/layout/main",function(){Backbone.history.start()})});

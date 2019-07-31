@@ -1,0 +1,1831 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>PowerBox - vigia</title>
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel='stylesheet' href='./stylesheets/style.css' />
+    <link rel='stylesheet' href='./ytdata/styles/app/main.css' />
+
+    <link rel="stylesheet" href="./stylesheets/jquery-ui.css" type="text/css">
+    <script src="./javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="./javascripts/jquery-ui.min.js"></script>
+
+    <link href="./bootstrap/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="./bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
+</head>
+<body stype="background-color: #E8E8E8;">
+<div class="box">
+    <div class="box1">
+        有新的事件消息
+        <!-- <span onclick="jQuery('.box').hide()" class="close_box">x</span> -->
+    </div>
+
+</div>
+<div style="width: 350px;height: 0px;margin-left: 80%;margin-top: 5px;">
+    <div style="float: left;">
+        <!--显示平台配置，把上面的left值改为81，下面的#badge的css中left改为335px  -->
+        <button class="butstyle" style="" onclick="click_system()">平台配置</button>
+        <button class="butstyle" onclick="click_report()">报警值设置</button>
+        <button class="butstyle" onclick="click_output()">输入输出口设置</button>
+    </div>
+    <img src="./images/xiaoxi.png" is_read="0" style="margin-left: 10px;" onclick="popBox(this)" width="35" alt="">
+    <div id="badge">0</div>
+    <!-- <div id="popLayer"></div> -->
+    <div id="popBox">
+        <div class="close" style="line-height: 1.4;">
+            <a href="javascript:void(0)" onclick="closeBox()">x</a>
+        </div>
+        <div class="content">
+            <h5 style="text-align: center;">未读消息</h5>
+            <div style="border:1px solid #ccc;"></div>
+
+            <div class="news" style="">
+            <!-- 消息列表 -->
+               <ul id="xiaoxi_news">                  
+               </ul>
+                
+            </div>
+            <div style="border:1px solid #ccc;"></div>
+            <div style="text-align: center;background-color: #E4DCCA;line-height: -moz-block-height;height: 30px;">
+                <button is_read="1" onclick="popBox(this)">全选已读</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="image-template">
+    <div style="margin-left: 73%;margin-top: 35px;">
+        <select id="powerOnline" style="width: 115px;">
+            <option value="">--请选择--</option>   
+            <option value="1">在线</option>
+            <option value="2">不在线</option>
+        </select>
+        日期：<input  id="time_begin" style="padding-left:5px;width: 125px;" type="text" value="" readonly>-
+        <input  id="time_end"  style="padding-left:5px;width: 125px;" type="text" value="" readonly>        
+        <input type="submit" style="" heart_type="1" onclick="submit_heart(this)" value="搜索">
+        <input type="submit" style="" heart_type="2" onclick="submit_heart(this)" value="全部">       
+    </div>
+    <div class="listbox" tabindex="0" id="qMKbqexo" style="opacity: 1 !important; visibility: visible;top: 65px;width: 500px;">
+        <table id="qMKbqexo_headers" class="headers" style="width: 500px; min-width: 500px; max-width: 500px;"
+            cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                <tr>                    
+                    <td class="column1 _DefaultStyle" style="width: 220px; min-width: 150px; max-width: 220px;">设备编号(共:<span class="heart_total">0</span>条)</td>
+                    <!-- <td class="column2 _DefaultStyle" style="width: 84px; min-width: 84px; max-width: 84px;">是否在线</td> -->
+                
+                    <td class="column4 _DefaultStyle" style="width: 220px; min-width: 220px; max-width: 220px;">心跳时间</td>
+                   
+                    <td id="qMKbqexo_padder" style="border-right: medium none; min-width: 0px; max-width: 0px; width: 0px;">&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="qMKbqexo_content" class="content" style="top: 30px;">
+            <table id="qMKbqexo_rows" class="rows" style="width: 500px; min-width: 500px; max-width: 500px;" cellspacing="0"
+                cellpadding="0" border="0">
+                <tbody id="qMKbqexo_userrows">                    
+                    <tr>                        
+                        <td class="column1" style="width: 150px; min-width: 150px; max-width: 150px; "></td>
+                        <td class="column2" style="width: 84px; min-width: 84px; max-width: 84px;"></td>
+                        
+                        <td class="column4" style="width: 120px; min-width: 120px; max-width: 120px;"></td>
+                        <td class="padder">
+                            &nbsp;</td>
+                    </tr>
+                    
+                </tbody>
+                <tbody id="qMKbqexo_autocontent">
+                    <tr style="background-color: rgb(255, 255, 255);">
+                        <td colspan="99" style="min-height: 22px; height: 22px;">&nbsp;</td>
+                    </tr>
+                    <tr style="background-color: rgb(237, 243, 254);">
+                        <td colspan="99"
+                            style="min-height: 22px; height: 22px; width: 500px; min-width: 500px; max-width: 500px;">&nbsp;
+                        </td>
+                    </tr>
+                    <tr style="background-color: rgb(255, 255, 255);">
+                        <td colspan="99"
+                            style="min-height: 22px; height: 22px; width: 500px; min-width: 500px; max-width: 500px;">&nbsp;
+                        </td>
+                    </tr>
+                    <tr style="background-color: rgb(237, 243, 254);">
+                        <td colspan="99"
+                            style="min-height: 22px; height: 22px; width: 500px; min-width: 500px; max-width: 500px;">&nbsp;
+                        </td>
+                    </tr>
+                    <tr style="background-color: rgb(255, 255, 255);">
+                        <td colspan="99"
+                            style="min-height: 22px; height: 22px; width: 500px; min-width: 500px; max-width: 500px;">&nbsp;
+                        </td>
+                    </tr>
+                    <tr style="background-color: rgb(237, 243, 254);">
+                        <td colspan="99"
+                            style="min-height: 22px; height: 22px; width: 500px; min-width: 500px; max-width: 500px;">&nbsp;
+                        </td>
+                    </tr>
+                    <tr style="background-color: rgb(255, 255, 255);">
+                        <td colspan="99"
+                            style="min-height: 22px; height: 22px; width: 500px; min-width: 500px; max-width: 500px;">&nbsp;
+                        </td>
+                    </tr>
+                    <tr style="background-color: rgb(237, 243, 254);">
+                        <td colspan="99"
+                            style="min-height: 22px; height: 22px; width: 500px; min-width: 500px; max-width: 500px;">&nbsp;
+                        </td>
+                    </tr>
+                    <tr style="background-color: rgb(255, 255, 255);">
+                        <td colspan="99"
+                            style="min-height: 22px; height: 22px; width: 500px; min-width: 500px; max-width: 500px;">&nbsp;
+                        </td>
+                    </tr>
+                    <tr style="background-color: rgb(237, 243, 254);">
+                        <td colspan="99"
+                            style="min-height: 22px; height: 22px; width: 500px; min-width: 500px; max-width: 500px;">&nbsp;
+                        </td>
+                    </tr>
+                    <tr style="background-color: rgb(255, 255, 255);">
+                        <td colspan="99"
+                            style="min-height: 22px; height: 22px; width: 500px; min-width: 500px; max-width: 500px;">&nbsp;
+                        </td>
+                    </tr>
+                    <tr style="background-color: rgb(237, 243, 254);">
+                        <td colspan="99"
+                            style="min-height: 22px; height: 22px; width: 500px; min-width: 500px; max-width: 500px;">&nbsp;
+                        </td>
+                    </tr>
+                    <tr style="background-color: rgb(255, 255, 255);">
+                        <td colspan="99"
+                            style="min-height: 22px; height: 22px; width: 500px; min-width: 500px; max-width: 500px;">&nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>
+<div class='parking-device-list'>
+    <div style="margin-top:-23px;margin-left: 10px; ">
+        <input type="text" style="width:265px;padding-left:5px; " id="powerBoxId" value="" placeholder="请输入设备编号或地址"><input onclick="submit_power(this)" type="submit" fun_type='1' value="搜索">
+        <input onclick="submit_power(this)" fun_type='2' type="submit" value="全部">
+    </div>
+    <div class="listbox" tabindex="0" id="park_device_list" style="opacity: 1 !important; visibility: visible;top:65px;width: 430px;bottom: 430px;"
+         data-ismainbox='true'>
+        <table id="park_device_list_headers" class="headers" cellspacing="0" cellpadding="0" border="0" style="width: 430px; min-width: 430px; max-width: 430px;">
+            <tbody>
+            <tr>
+                <td class="column1 _DefaultStyle" style="width: 170px; min-width: 170px; max-width: 170px;">设备编号</td>
+                <td class="column2 _DefaultStyle" style="width: 80px; min-width: 80px; max-width: 80px;">设备状态</td>
+                <td class="column3 _DefaultStyle" style="width: 100px; min-width: 100px; max-width: 100px;">地址</td>
+                <td class="column3 _DefaultStyle" style="width: 100px; min-width: 170px; max-width: 100px;">IP</td>
+                <td id="park_device_list_padder" style="border-right: none; min-width: 0px; max-width: 0px; width: 0px;">&nbsp;</td>
+            </tr>
+            </tbody>
+        </table>
+        <div id="park_device_list_content" class="content" style="top: 30px;">
+            <table id="park_device_list_rows" class="rows" cellspacing="0" cellpadding="0" border="0" style="width: 420px; min-width: 420px; max-width: 420px;">
+                <tbody id="park_device_list_userrows">
+
+
+                </tbody>
+                <tbody id="park_device_list_autocontent">
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 420px; min-width: 420px; max-width: 420px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 420px; min-width: 420px; max-width: 420px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 420px; min-width: 420px; max-width: 420px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 420px; min-width: 420px; max-width: 420px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 420px; min-width: 420px; max-width: 420px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 420px; min-width: 420px; max-width: 420px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 420px; min-width: 420px; max-width: 420px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 420px; min-width: 420px; max-width: 420px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 420px; min-width: 420px; max-width: 420px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 420px; min-width: 420px; max-width: 420px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 420px; min-width: 420px; max-width: 420px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 420px; min-width: 420px; max-width: 420px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 420px; min-width: 420px; max-width: 420px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 420px; min-width: 420px; max-width: 420px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 420px; min-width: 420px; max-width: 420px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 420px; min-width: 420px; max-width: 420px;">&nbsp;</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class='parking-event-list'>
+    <div style="margin-left: 24%;margin-top: -23px;">
+        <select id="powerEventCode" style="width: 220px;">
+            
+        </select>
+        <input type="text" name="powerBoxId" id="powerBoxId2" style="padding-left:5px;width: 185px;" value="" placeholder="请输入设备编号或地址">
+        日期：<input  id="date_begin"  style="padding-left:5px;width: 125px;" type="text" value="" readonly>-
+        <input  id="date_end"  style="padding-left:5px;width: 125px;" type="text" value="" readonly>       
+        <input type="submit" style="width: 55px;" event_type='1' onclick="submit_event(this)" value="搜索">   
+        <input type="submit" style="width: 55px;" event_type='2' onclick="submit_event(this)" value="全部">     
+    </div>
+    <div class="listbox" tabindex="0" id="DjJyFTbh" style="opacity: 1 !important; visibility: visible;right: 520px;top:65px;left: 445px;bottom: 80px;">
+        <table id="DjJyFTbh_headers" class="headers" cellspacing="0" cellpadding="0" border="0" style="width: 100%; min-width: 630px;">
+            <tbody>
+            <tr>
+                <td class="column1 _DefaultStyle" style="width: 130px; min-width: 130px; max-width: 130px;">触发时间(共:<span class="event_total">0</span>条)</td>
+                <td class="column2 _DefaultStyle" style="width: 150px; min-width: 150px; max-width: 150px;">事件</td>
+                <td class="column3 _DefaultStyle" style="width: 126px; min-width: 126px; max-width: 126px;">设备编号</td>
+                <td class="column4 _DefaultStyle" style="width: 126px; min-width: 126px; max-width: 126px;">地址</td>
+                <td id="DjJyFTbh_padder" style="border-right: none; min-width: 0px; max-width: 0px; width: 0px;">
+                    &nbsp;</td>                
+            </tr>
+            </tbody>
+        </table>
+        <div id="DjJyFTbh_content" class="content" style="top: 30px;">
+            <table id="DjJyFTbh_rows" class="rows" cellspacing="0" cellpadding="0" border="0" style="width: 100%; min-width: 630px;">
+                <tbody class="event_list_userrows" id="DjJyFTbh_userrows">
+                <tr args="">
+                    
+                    <td class="column1 " style="min-height: 22px; height: 22px; "></td>
+                    <td class="column2 " style="min-height: 22px; height: 22px; "></td>
+                    <td class="column3 " style="min-height: 22px; height: 22px; "></td>
+                    <td class="column4 " style="min-height: 22px; height: 22px; "></td>
+                    <td class="padder">&nbsp;</td>
+                </tr>
+                </tbody>
+                <tbody id="DjJyFTbh_autocontent">
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 630px; min-width: 630px; max-width: 630px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 630px; min-width: 630px; max-width: 630px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 630px; min-width: 630px; max-width: 630px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 630px; min-width: 630px; max-width: 630px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 630px; min-width: 630px; max-width: 630px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 630px; min-width: 630px; max-width: 630px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 630px; min-width: 630px; max-width: 630px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 630px; min-width: 630px; max-width: 630px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 630px; min-width: 630px; max-width: 630px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 630px; min-width: 630px; max-width: 630px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 630px; min-width: 630px; max-width: 630px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 630px; min-width: 630px; max-width: 630px;">&nbsp;</td>
+                </tr>
+                
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+    <div class="row" style="position:absolute; bottom:0px;margin-left: 39%;">
+        <div class="col-md-12">
+            <div class="portlet">
+                <div id="htmlDiv"></div>
+                <div class="col-lg-12" align="center">
+                    <!-- 分页控件，标签必须是<ul> -->
+                    <ul id="pageButton"></ul>
+                </div>
+            </div>
+        </div>
+      </div>
+
+</div>
+
+<div class="parking-device-info">
+    <div class="listbox" tabindex="0" id="mdWRzz8t" style="opacity: 1 !important; visibility: visible;width: 430px;height: 405px;">
+        <table id="mdWRzz8t_headers" class="headers" cellspacing="0" cellpadding="0" border="0" style="width: 355px; min-width: 355px; max-width: 355px;">
+            <tbody>
+            <tr>
+                <td class="column1 _DefaultStyle"
+                    style="width: 84px; min-width: 84px; max-width: 84px;">Column 1</td>
+                <td class="column2 _DefaultStyle"
+                    style="width: 195px; min-width: 195px; max-width: 195px;">Column 2</td>
+                <td id="mdWRzz8t_padder" style="border-right: none; min-width: 100px; max-width: 100px; width: 100px;">操作</td>
+            </tr>
+            </tbody>
+        </table>
+        <div id="mdWRzz8t_content" class="content" style="top: 0px;">
+            <table id="mdWRzz8t_rows" class="rows" cellspacing="0" cellpadding="0" border="0" style="width: 355px; min-width: 355px; max-width: 355px;">
+                <tbody id="mdWRzz8t_userrows">
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td class="column1" style="min-height: 22px; height: 22px; width: 85px; min-width: 85px; max-width: 85px;">设备编号</td>
+                    <td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;"></td>
+                    <td class="padder">&nbsp;</td>
+                </tr>
+                
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td class="column1" style="min-height: 22px; height: 22px; width: 85px; min-width: 85px; max-width: 85px;">电压12v</td>
+                    <td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;"></td>
+                    <td class="padder">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td class="column1" style="min-height: 22px; height: 22px; width: 85px; min-width: 85px; max-width: 85px;">电压24v</td>
+                    <td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;"></td>
+                    <td class="padder">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td class="column1" style="min-height: 22px; height: 22px; width: 85px; min-width: 85px; max-width: 85px;">电压220v</td>
+                    <td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;"></td>
+                    <td class="padder">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td class="column1 output_first" style="min-height: 22px; height: 22px; width: 85px; min-width: 85px; max-width: 85px;">输出口1</td>
+                    <td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;"></td>
+                    <td class="padder">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td class="column1 output_second" style="min-height: 22px; height: 22px; width: 85px; min-width: 85px; max-width: 85px;">输出口2</td>
+                    <td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;"></td>
+                    <td class="padder">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td class="column1 output_third" style="min-height: 22px; height: 22px; width: 85px; min-width: 85px; max-width: 85px;">输出口3</td>
+                    <td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;"></td>
+                    <td class="padder">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td class="column1 output_four" style="min-height: 22px; height: 22px; width: 85px; min-width: 85px; max-width: 85px;">输出口4</td>
+                    <td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;"></td>
+                    <td class="padder">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td class="column1 input_first" style="min-height: 22px; height: 22px; width: 85px; min-width: 85px; max-width: 85px;">输入口1</td>
+                    <td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;"></td>
+                    <td class="padder">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td class="column1 input_second" style="min-height: 22px; height: 22px; width: 85px; min-width: 85px; max-width: 85px;">输入口2</td>
+                    <td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;"></td>
+                    <td class="padder">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td class="column1 input_third" style="min-height: 22px; height: 22px; width: 85px; min-width: 85px; max-width: 85px;">输入口3</td>
+                    <td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;"></td>
+                    <td class="padder">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td class="column1 input_four" style="min-height: 22px; height: 22px; width: 85px; min-width: 85px; max-width: 85px;">输入口4</td>
+                    <td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;"></td>
+                    <td class="padder">&nbsp;</td>
+                </tr>
+
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td class="column1" style="min-height: 22px; height: 22px; width: 85px; min-width: 85px; max-width: 85px;">12v防雷器</td>
+                    <td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;"></td>
+                    <td class="padder">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td class="column1" style="min-height: 22px; height: 22px; width: 85px; min-width: 85px; max-width: 85px;">24v防雷器</td>
+                    <td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;"></td>
+                    <td class="padder">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td class="column1" style="min-height: 22px; height: 22px; width: 85px; min-width: 85px; max-width: 85px;">220v防雷器</td>
+                    <td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;"></td>
+                    <td class="padder">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td class="column1" style="min-height: 22px; height: 22px; width: 85px; min-width: 85px; max-width: 85px;">温度</td>
+                    <td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;"></td>
+                    <td class="padder">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td class="column1" style="min-height: 22px; height: 22px; width: 85px; min-width: 85px; max-width: 85px;">湿度</td>
+                    <td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;"></td>
+                    <td class="padder">&nbsp;</td>
+                </tr>
+               
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td class="column1" style="min-height: 22px; height: 22px; width: 85px; min-width: 85px; max-width: 85px;">经度</td>
+                    <td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;"></td>
+                    <td class="padder">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td class="column1" style="min-height: 22px; height: 22px; width: 85px; min-width: 85px; max-width: 85px;">纬度</td>
+                    <td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;"></td>
+                    <td class="padder">&nbsp;</td>
+                </tr>
+                
+                </tbody>
+                <tbody id="mdWRzz8t_autocontent">
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 410px; min-width: 410px; max-width: 410px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 410px; min-width: 410px; max-width: 410px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 410px; min-width: 410px; max-width: 410px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 410px; min-width: 410px; max-width: 410px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 410px; min-width: 410px; max-width: 410px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 410px; min-width: 410px; max-width: 410px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 410px; min-width: 410px; max-width: 410px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 410px; min-width: 410px; max-width: 410px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 410px; min-width: 410px; max-width: 410px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 410px; min-width: 410px; max-width: 410px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(255, 255, 255);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 410px; min-width: 410px; max-width: 410px;">&nbsp;</td>
+                </tr>
+                <tr style="background-color: rgb(237, 243, 254);">
+                    <td colspan="99" style="min-height: 22px; height: 22px; width: 410px; min-width: 410px; max-width: 410px;">&nbsp;</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="XojoDialogs">
+    
+</div>
+<div id="inout" class="out_report" style="display: none;box-shadow: 0px 0px 1px #000;">
+    <h4>输入输出口设置</h4> 
+    <img src='/images/dot_up.png' alt='' border='0' style='position: absolute; width: 16px; height: 16px; top: 2%; margin-left: 220px;' id='put_image' class='closeput'>
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="firstname" class="col-sm-2 control-label">输出口1</label>
+            <div class="col-sm-10">
+                <input type="text" style="width: 86%;" class="form-control" id="output1" 
+                       placeholder="请定义其功能">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">输出口2</label>
+            <div class="col-sm-10">
+                <input type="text" style="width: 86%;" class="form-control" id="output2" 
+                       placeholder="请定义其功能">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="firstname" class="col-sm-2 control-label">输出口3</label>
+            <div class="col-sm-10">
+                <input type="text" style="width: 86%;" class="form-control" id="output3" 
+                       placeholder="请定义其功能">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">输出口4</label>
+            <div class="col-sm-10">
+                <input type="text" style="width: 86%;" class="form-control" id="output4" 
+                       placeholder="请定义其功能">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="firstname" class="col-sm-2 control-label">输入口1</label>
+            <div class="col-sm-10">
+                <input type="text" style="width: 86%;" class="form-control" id="input1" 
+                       placeholder="请定义其功能">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">输入口2</label>
+            <div class="col-sm-10">
+                <input type="text" style="width: 86%;" class="form-control" id="input2" 
+                       placeholder="请定义其功能">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="firstname" class="col-sm-2 control-label">输入口3</label>
+            <div class="col-sm-10">
+                <input type="text" style="width: 86%;" class="form-control" id="input3" 
+                       placeholder="请定义其功能">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">输入口4</label>
+            <div class="col-sm-10">
+                <input type="text" style="width: 86%;" class="form-control" id="input4" 
+                       placeholder="请定义其功能">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10" style="margin-left: 11.667%;">
+                <button type="submit" onclick="save_put()" class="btn btn-default" style="color: #fff;background-color: #428bca;border-color: #428bca;width: 100px;line-height: 0.429;">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="report_set" class="out_report" style="display: none;height: 330px;top: 95px;box-shadow: 0px 0px 1px #000;">
+    <h4>报警值设置</h4> 
+    <img src='./images/dot_up.png' alt='' border='0' style='position: absolute; width: 16px; height: 16px; top: 2%; margin-left: 220px;' id='report_image' class='close_report'>
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="firstname" class="col-sm-2 control-label">12v电压</label>
+            <div class="col-sm-4">
+                <input type="number" class="form-control" id="V12_report" 
+                       placeholder="请输入">
+            </div>
+
+            <label for="firstname" class="col-sm-2 control-label">报警范围</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="V12_scope">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">24v电压</label>
+            <div class="col-sm-4">
+                <input type="number" class="form-control" id="V24_report" 
+                       placeholder="请输入">
+            </div>
+            <label for="lastname" class="col-sm-2 control-label">报警范围</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="V24_scope">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="firstname" class="col-sm-2 control-label">220v电压</label>
+            <div class="col-sm-4">
+                <input type="number" class="form-control" id="V220_report" 
+                       placeholder="请输入">
+            </div>
+            <label for="lastname" class="col-sm-2 control-label">报警范围</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="V220_scope">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">温度</label>
+            <div class="col-sm-4">
+                <input type="number" class="form-control" id="temperature_report" 
+                       placeholder="请输入">
+            </div>
+            <label for="lastname" class="col-sm-2 control-label">报警范围</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="temperature_scope">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">湿度</label>
+            <div class="col-sm-4">
+                <input type="number" class="form-control" id="humidity_report" 
+                       placeholder="请输入">
+            </div>
+            <label for="lastname" class="col-sm-2 control-label">报警范围</label>
+            <div class="col-sm-3">
+                <input type="number" class="form-control" id="humidity_scope">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10" style="margin-left: 11.667%;">
+                <button type="submit" onclick="save_report()" class="btn btn-default" style="color: #fff;background-color: #428bca;border-color: #428bca;width: 100px;line-height: 0.429;">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="system_set" class="out_report" style="display: none;height: 180px;top: 0px;box-shadow: 0px 0px 1px #000;">
+    <h4>平台配置</h4> 
+    <img src='./images/dot_up.png' alt='' border='0' style='position: absolute; width: 16px; height: 16px; top: 2%; margin-left: 220px;' id='system_image' class='close_system'>
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="firstname" class="col-sm-3 control-label">平台ServerID</label>
+            <div class="col-sm-8">
+                <input type="number" class="form-control" id="ServerId" 
+                       placeholder="请输入">
+            </div>
+            
+        </div>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-3 control-label">平台地址</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="server_address" 
+                       placeholder="请输入">
+            </div>
+            
+        </div>
+        
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10" style="margin-left: 11.667%;">
+                <button type="submit" onclick="save_server()" class="btn btn-default" style="color: #fff;background-color: #428bca;border-color: #428bca;width: 100px;line-height: 0.429;">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="rightmenu" style="display: none; z-index: 7; position: absolute; top: 160px; left: 145px; visibility: visible;">
+    <ul id="rightmenu_inner" class="menu" style="display: inline-block; top: 0px; left: 0px;">
+        <li id="XpEpbMtT1P_item" class="item" action="addDevice" args='add'><span id="XpEpbMtT1P_caption">添加设备</span></li>
+        <li id="HxZTnDrYia_item" class="item" action="addDevice" args='edit'><span id="HxZTnDrYia_caption">编辑设备</span></li>
+        <li id="DPFP7UNstI_item" class="separator"></li>
+        <li id="XU5YhKVeTl_item" class="item" action="addDevice" args='del'><span id="XU5YhKVeTl_caption">删除设备</span></li>
+    </ul>
+</div>
+<!-- <div class="big_div">    -->
+<!-- <div id="container" class="small1" style="width: 550px; height: 400px; margin: 0 auto;"></div> -->
+<!-- <div id="container2" class="small2" style="width: 550px; height: 400px; margin: 0 auto"></div> -->
+<!-- </div> -->
+
+<style type="text/css" media="all" id="pgMain_P2tTpli4">
+    .out_report{
+        position: absolute;
+        bottom: 47px;
+        width: 500px;
+        height: 470px;
+        line-height: 22px;
+        font-size: 12px;
+        text-align: center;
+        overflow: hidden;
+        background-color:  rgb(255,255,255);
+        top:40px;
+        left: 35%;
+        border:1px solid #edf3fe;
+        z-index:99999;
+    }
+    #P2tTpli4 {
+        overflow: hidden;
+        background-color: #E8E8E8;
+        position: absolute;
+        left: -100%;
+        top: 0%;
+        width: 100%;
+        height: 100%;
+    }
+
+    #K3ByFa0S {
+        position: absolute;
+        overflow: hidden;
+        left: 50%;
+        margin-left: -128px;
+        width: 256px;
+        top: 73%;
+        margin-top: -128px;
+        height: 256px;
+        cursor: inherit;
+        z-index: 1;
+    }
+
+    #headmenu {
+        position: absolute;
+        overflow: hidden;
+        left: 0px;
+        right: 0px;
+        width: auto;
+        top: 39px;
+        bottom: auto;
+        height: 29px;
+        cursor: inherit;
+        z-index: 2;
+    }
+
+    #eMtVkGmm,
+    .header-img {
+        position: absolute;
+        overflow: hidden;
+        left: 0px;
+        right: 0px;
+        width: auto;
+        top: 0px;
+        bottom: auto;
+        height: 39px;
+        cursor: inherit;
+        z-index: 3;
+    }
+
+    #Z1l5kwEz {
+        position: absolute;
+        overflow: hidden;
+        left: 278px;
+        right: auto;
+        width: 160px;
+        top: 16px;
+        bottom: auto;
+        height: 22px;
+        cursor: default;
+        z-index: 4;
+    }
+
+    #f9AYuuk2 {
+        position: absolute;
+        overflow: hidden;
+        left: auto;
+        right: 20px;
+        width: 624px;
+        top: 16px;
+        bottom: auto;
+        height: 22px;
+        cursor: default;
+        z-index: 5;
+    }
+    .tr_background{
+        background-color: #3875d7 !important;
+        color:#fff;
+    }
+
+    #badge {
+        width: 22px;
+        height: 22px;
+        line-height: 22px;  /* 数值与height相同，使数字垂直居中 */
+        text-align: center;  /* 使数字水平居中 */
+        background-color: red;
+        color: white;
+        font-size: 12px;
+        font-weight: 700;
+        border-radius: 50%;  /* 使正方形变圆形，矩形变椭圆形 */
+        position: relative;
+        bottom: 60px;
+        margin-top: 27px;
+        margin-left: 335px;
+        /*left: 90px;*/
+    }
+
+
+    /*消息列表中弹出层*/
+    #popBox {
+        display: none;
+        background-color: #E4DCCA;
+        z-index: 11;
+        width: 310px;
+        height: 350px;
+        position:fixed;
+        top:30px;
+        right:55px;
+        /*left:0;
+        bottom:0;*/
+        margin:auto;
+        border: 3px solid #edf3fe;
+    }
+
+    #popBox .close{
+        text-align: right;
+        margin-right: 6px;
+        background-color: #F8F8F8;
+    }
+
+    /*关闭按钮*/
+    #popBox .close a {
+        text-decoration: none;
+        color: #2D2C3B;
+    }
+
+    .news{
+        text-overflow:ellipsis;
+        white-space:nowrap;
+        width:95%;
+        padding: 7px;
+        overflow: auto;
+        word-break:keep-all;
+        line-height: 1.8;
+        height: 275px;
+    } 
+
+    /*消息提醒框样式*/
+    .box{
+        position: fixed;
+        display: none;
+        background-color: rgba(0,0,0,0.2);
+        z-index: 9;
+        color: #ffffff;
+    }
+
+    .box1{
+        position: fixed;
+        left:91%;
+        top:3%;
+        /*margin-left: -250px;*/
+        border: 1px solid #e12a2a;
+        width: 110px;
+        height: 26px;
+        background-color: #e12a2a;
+        border-radius: 5px;
+        text-align: center;
+    }
+    .butstyle{
+        padding: 3px 8px;
+        background: #428bca;
+        color: #fff;
+    }
+
+    .highcharts-container{
+        z-index: 5 !important;
+    } 
+
+
+    .big_div{
+         text-align: center;
+         margin: 0 auto;
+         padding: 0;
+         clear: both;
+         height: auto;
+         border: 1px solid #fff;
+     }
+     .small1,.small2{
+         padding: 0;
+         display: inline-block;
+     }
+</style>
+<!-- <script src="./ytdata/scripts/app/jqueryplus.js?v=20181118200408" type="text/javascript"></script>
+<script src="./ytdata/scripts/app/libs.js?v=20181118200408" type="text/javascript"></script>
+<script src="./ytdata/scripts/app/templates.js?v=20181118200408" type="text/javascript"></script>
+<script type="text/javascript" src="./ytdata/scripts/app/pagemodel.js"></script> -->
+
+<script type="text/javascript" src="./bootstrap/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./bootstrap/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./bootstrap/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./bootstrap/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./bootstrap/js/bootstrap-paginator.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./javascripts/highcharts.js" charset="UTF-8"></script>
+<script type="text/javascript">
+    var host = window.location.host;
+    var server_ip = "http://"+host; //192.168.36.11
+    document.oncontextmenu = function(){return false};
+    function DatePicker(beginSelector,endSelector){
+            // 仅选择日期
+            $(beginSelector).datetimepicker(
+            {
+                //language:  'fr',
+                format: 'yyyy-mm-dd hh:ii',//日期格式
+                weekStart: 1,
+                todayBtn:  1,//今日按钮
+                autoclose: 1,//选中关闭
+                todayHighlight: 1,
+                startView: 2,
+                forceParse: 0,
+                showMeridian: 1,
+                bootcssVer: 3,//prev、next箭头是否显示
+                setDate: new Date()
+            }).on('changeDate', function(ev){               
+                if(ev.date){
+                    $(endSelector).datetimepicker('setStartDate', new Date(ev.date.valueOf()))
+                }else{
+                    $(endSelector).datetimepicker('setStartDate',null);
+                }
+            })
+ 
+            $(endSelector).datetimepicker(
+            {
+                //language:  'fr',
+                format: 'yyyy-mm-dd hh:ii',
+                weekStart: 1,
+                todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                forceParse: 0,
+                showMeridian: 1,
+                bootcssVer: 3,
+                setDate: new Date()
+            }).on('changeDate', function(ev){  
+                if(ev.date){
+                    $(beginSelector).datetimepicker('setEndDate', new Date(ev.date.valueOf()))
+                }else{
+                    $(beginSelector).datetimepicker('setEndDate',new Date());
+                } 
+ 
+            })
+        }
+         
+
+    // 分页函数
+    function getPageOfMemo(page,obj={}) {        
+        // 获取请求参数(input里面的时间人员参数可忽略注释)       
+        obj["page"] = page;
+        $.post(server_ip+"/api/power/getevent",obj,function(data){
+            power_event(data);
+            if(data.total>=1){
+                var element = $('#pageButton');
+                var options = {
+                    bootstrapMajorVersion : 3,
+                    currentPage : page, // 当前页数
+                    numberOfPages : 5, // 显示按钮的数量
+                    totalPages : data.totalPages, // 总页数
+                    itemTexts : function(type, page, current) {
+                        switch (type) {
+                        case "first":
+                            return "首页";
+                        case "prev":
+                            return "上一页";
+                        case "next":
+                            return "下一页"; 
+                        case "last":
+                            return "末页";
+                        case "page":
+                            return page;
+                        }
+                    },
+                    // 点击事件，用于通过Ajax来刷新整个list列表
+                    onPageClicked : function(event, originalEvent, type, page) {
+                        getPageOfMemo(page,obj);
+                    }
+                };
+
+                element.bootstrapPaginator(options);
+            }else{
+                $('#pageButton').empty();
+            }
+            
+        });
+    };
+
+    $(function(){
+        //调用日期控件
+        DatePicker("#date_begin","#date_end");
+        DatePicker("#time_begin","#time_end");
+        powerevent_total();
+
+        // 所有电源箱设备
+        $.post(server_ip+"/api/power/powerbox",{},function(data){
+            powerlist(data);
+        });
+        
+        // 初始化页面 所有事件列表
+        getPageOfMemo(1);
+
+        // 获取所有事件编码
+        $.get(server_ip+"/api/power/eventcode",{},function(data){
+            $("#powerEventCode").append("<option value=''>--请选择事件--</option>");
+            for (var i =0; i < data.length; i++) {
+                $("#powerEventCode").append("<option value="+data[i]['code']+">"+data[i]['name']+"</option>");
+            }
+        });
+         
+
+        
+        //所有心跳信息列表
+        $.post(server_ip+"/api/power/getheartbeat",{},function(data){
+            power_heart(data);
+        });
+
+        var res = document.getElementById('rightmenu');      //找到id为box的div
+        $('#park_device_list').mousedown(function(e){
+            if(e.which!=1){
+              if(e.which===3){       // 1 = 鼠标左键 left; 2 = 鼠标中键; 3 = 鼠标右键                
+                var x = 10;
+                var y = 10;
+                // alert(e.clientX+':'+e.clientY);
+                $("#rightmenu").css("top",e.clientY+'px');//设置提示div的位置
+                $("#rightmenu").css("left",e.clientX+'px');
+                if($('#rightmenu').css('display')=='none'){
+                    res.style.display = 'block';  //显示div盒子
+                }else{
+                    res.style.display = 'none';
+                }
+                      
+              }else{
+                res.style.display = 'none';         //否则不显示div盒子
+              } 
+            }
+          
+          return true;//阻止链接跳转
+        })
+        
+    });
+
+    // 根据设备编号搜索电源箱设备功能
+    function submit_power(obj){
+        var fun_type = $(obj).attr('fun_type');
+        if(fun_type==1){
+            var PowerBoxId = $('#powerBoxId').val();
+        }else{
+            var PowerBoxId = '';
+            $('#powerBoxId').val('');
+        }
+        
+        $.post(server_ip+"/api/power/powerbox",{PowerBoxId:PowerBoxId},function(data){            
+            powerlist(data);
+        });
+    }
+    
+    // 根据设备编号查询详情模块信息
+    function power(obj){
+        var trs = $(obj).parent().find('tr'); //获取所有tr
+        if(trs.hasClass('tr_background')){ //判断这些tr 有没有Class ‘tr_background’
+            trs.removeClass('tr_background');//把class tr_background 移除
+        }
+        $(obj).addClass('tr_background');
+         
+        var PowerBoxId = $(obj).attr('PowerBoxId');
+        if(PowerBoxId==''){
+            alert('没有选中设备');
+            return false;
+        }
+        $('#XpEpbMtT1P_item').attr('PowerBoxId',PowerBoxId);
+        $('#HxZTnDrYia_item').attr('PowerBoxId',PowerBoxId);
+        $('#XU5YhKVeTl_item').attr('PowerBoxId',PowerBoxId);
+        $('#powerEventCode').attr('PowerBoxId',PowerBoxId);
+        //详情信息
+        $.post(server_ip+"/api/power/powerone",{PowerBoxId:PowerBoxId},function(data){
+            $('#mdWRzz8t_userrows').empty();           
+            powerinfo(data);
+            
+        });
+            
+    }
+
+    //根据事件编码、日期等查询事件
+    function submit_event(obj){
+        var event_type = $(obj).attr('event_type');
+        if(event_type==1){
+            var PowerBoxId = $('#powerBoxId2').val();
+            var eventCode = $('#powerEventCode').val();
+            var date_begin = $('#date_begin').val();
+            var date_end = $('#date_end').val();
+        }else{
+            var PowerBoxId = '';
+            var eventCode = '';
+            var date_begin = '';
+            var date_end = '';
+            $('#powerBoxId2').val('');
+            $('#powerEventCode').val('');
+            $('#date_begin').val('');
+            $('#date_end').val('');
+        }
+
+        var data_obj = {PowerBoxId:PowerBoxId,eventCode:eventCode,date_begin:date_begin,date_end:date_end};
+        // 获取查询事件结果
+        getPageOfMemo(1,data_obj);
+        
+    }
+
+    //根据设备状态和日期查询心跳信息
+    function submit_heart(obj){
+        var heart_type = $(obj).attr('heart_type');
+        if(heart_type==1){
+            var online = $('#powerOnline').val();
+            var time_begin = $('#time_begin').val();
+            var time_end = $('#time_end').val();
+            if(time_begin!='' && time_end==''){
+                alert('日期范围结束时间必填');
+                return false;
+            }
+            if(time_begin=='' && time_end!=''){
+                alert('日期范围开始时间必填');
+                return false;
+            }
+        }else{
+            var online = '';
+            var time_begin = '';
+            var time_end = '';
+            $('#powerOnline').val('');
+            $('#time_begin').val('');
+            $('#time_end').val('');            
+        }
+
+        
+        $.post(server_ip+"/api/power/getheartbeat",{online:online,time_begin:time_begin,time_end:time_end},function(data){
+            power_heart(data);
+        });        
+    }
+
+    //远程控制设备
+    function submit_control(obj){
+        var name = $(obj).attr('name');
+        var PowerBoxId = $(obj).attr('PowerBoxId');
+
+        if(PowerBoxId==undefined){
+            alert('请先选中设备');
+            return false;
+        }
+
+        $.post(server_ip+"/api/power/control",{PowerBoxId:PowerBoxId,name:name},function(data){
+            alert(data.message);
+            if(data.code==200){
+                $.post(server_ip+"/api/power/powerone",{PowerBoxId:PowerBoxId},function(data){
+                    $('#mdWRzz8t_userrows').empty();   
+                    //刷新模块     
+                    powerinfo(data);
+
+                });
+            }
+        });
+        
+    }
+
+    //弹框添加设备 
+    $('#XpEpbMtT1P_item').click(
+        function(obj){
+           $("#XojoDialogs").append("<div id='EhvgfUkd' class='sheet' style='display: block; visibility: visible; z-index: 34; opacity: 1; transition-property: opacity; transition-duration: 0.2s; transition-timing-function: ease-out;'><div id='EhvgfUkd_body' class='body' style='visibility: visible; top: 0px; transition-property: top; transition-duration: 0.2s; transition-timing-function: ease-out;'><div id='Frk4UdP5'><input class='tabWrapFirstField' style='visibility:visible;left:10000px;top:10000px;opacity:0;width:0px;height:0px;overflow:hidden;padding:0px;filter: alpha(opacity=0);-ms-filter:&#39;progid:DXImageTransform.Microsoft.Alpha(Opacity=0)&#39;;' id='Frk4UdP5_inner' type='text' readonly='readonly' autocomplete='on' autocorrect='on' autocapitalize='on'></div><div id='fqKpRcbE' onclick='hiddens()' style='opacity: 1 !important; visibility: visible;' class=''><img src='./images/dot_up.png' alt='' border='0' style='position: absolute; width: 16px; height: 16px; top: 50%; margin-top: -8px; left: 50%; margin-left: -8px;' id='fqKpRcbE_image' class='closedlg'></div><div style='text-align: right; opacity: 1 !important; visibility: visible;top: 45px;' id='JmzuhAkA'><div style='position: absolute; left: 0px; right: 0px; top: 50%; overflow: hidden; margin-top: -9px; height: 19px; max-height: 19px;' class=''><p style='margin: 0px;' class=''>设备编号</p></div></div><div style='text-align: right; opacity: 1 !important; visibility: visible;' id='o9eQfdFo'><div style='position: absolute; left: 0px; right: 0px; top: 50%; overflow: hidden; margin-top: -9px; height: 19px; max-height: 19px;' class=''><p style='margin: 0px;' class=''>设备备注</p></div></div><div style='display:none; text-align: right; opacity: 1 !important; visibility: visible;' id='R6szEpzC'><div style='position: absolute; left: 0px; right: 0px; top: 50%; overflow: hidden; margin-top: -9px; height: 19px; max-height: 19px;' class=''><p style='margin: 0px;' class=''>设备编码</p></div></div><div style='text-align: right; opacity: 1 !important; visibility: visible;' id='DZAQxAC6'><div style='position: absolute; left: 0px; right: 0px; top: 50%; overflow: hidden; margin-top: -9px; height: 19px; max-height: 19px;' class=''><p style='margin: 0px;' class=''>地址</p></div></div><div id='a9dUZ2yN' class='' style='visibility: visible;top: 45px;'><input id='a9dUZ2yN_inner' style='height:25px;' name='PowerBoxId' type='text' class='textcontrol' autocomplete='on' autocorrect='on' autocapitalize='on' value=''></div><div id='yzRhL0qT' class='' style='visibility: visible;'><input id='yzRhL0qT_inner' name='PowerBoxCode' type='hidden'  class='textcontrol' style='height:25px;' autocomplete='on' autocorrect='on' autocapitalize='on' value=''></div><div id='qjJqNeGD' class='' style='visibility: visible;'><input id='qjJqNeGD_inner' style='height:25px;' name='txtAddress' type='text' class='textcontrol' autocomplete='on'autocorrect='on' autocapitalize='on' value=''></div><div style='text-align: right; opacity: 1 !important; visibility: visible;' id='f5lVDL4N'><div style='position: absolute; left: 0px; right: 0px; top: 50%; overflow: hidden; margin-top: -9px; height: 19px; max-height: 19px;' class=''><p style='margin: 0px;' class=''>经度</p></div></div><div id='HMQAqjHk' class='' style='visibility: visible;'><input id='HMQAqjHk_inner' style='height:25px;' name='txtLon' type='number' class='textcontrol' autocomplete='on' autocorrect='on' autocapitalize='on' value=''></div><div style='text-align: right; opacity: 1 !important; visibility: visible;' id='GcU1CtKu'><div style='position: absolute; left: 0px; right: 0px; top: 50%; overflow: hidden; margin-top: -9px; height: 19px; max-height: 19px;' class=''><p style='margin: 0px;' class=''>纬度</p></div></div><div id='HWwMqu1u' class='' style='visibility: visible;'><input id='HWwMqu1u_inner' name='txtLat' style='height:25px;' type='number' class='textcontrol' autocomplete='on' autocorrect='on' autocapitalize='on' value=''></div><div style='text-align: right; opacity: 1 !important; visibility: visible;' id='wxIuXzt6'><div style='position: absolute; left: 0px; right: 0px; top: 50%; overflow: hidden; margin-top: -9px; height: 19px; max-height: 19px;' class=''><p style='margin: 0px;' class=''>高度</p></div></div><div style='display:none; text-align: right; opacity: 1 !important; visibility: visible;' id='Em3uKTqB'><div style='position: absolute; left: 0px; right: 0px; top: 50%; overflow: hidden; margin-top: -9px; height: 19px; max-height: 19px;' class=''><p style='margin: 0px;' class=''>楼层</p></div></div><div id='dg0SlEfA' class='' style='visibility: visible;'><input id='dg0SlEfA_inner' style='height:25px;' name='txtAlt' type='number' class='textcontrol' autocomplete='on'  autocorrect='on' autocapitalize='on' value=''> </div><div id='d0n0hCtN' class='' style='visibility: visible;'><input id='d0n0hCtN_inner' style='height:25px;' name='txtFloor' type='hidden' class='textcontrol' autocomplete='on' autocorrect='on' autocapitalize='on' value=''></div><div id='Ua0JUouU' style='visibility: visible;'><input id='Ua0JUouU_inner' method='add' onclick='save(this)' name='btmSave' value='保存' type='button'></div><div id='Px0OckIy' class='' style='visibility: visible;'><textarea id='Px0OckIy_inner' name='txtNote' class='textcontrol' ></textarea></div><div id='oe2arfTk'><input style='visibility:visible;left:10000px;top:10000px;opacity:0;width:0px;height:0px;overflow:hidden;padding:0px;filter: alpha(opacity=0);-ms-filter:&#39;progid:DXImageTransform.Microsoft.Alpha(Opacity=0)&#39;;' id='oe2arfTk_inner' type='text' readonly='readonly' class='textcontrol _Style' autocomplete='on'  autocorrect='on' autocapitalize='on'></div><img id='EhvgfUkd_resize' class='resize' src='/images/palette_resize.png' width='15'  height='15' alt='' style='display: none;'></div> <div id='EhvgfUkd_anim' style='display: none; visibility: visible;'>&nbsp;</div></div>");
+        }
+    );
+
+    //弹框编辑设备 
+    $('#HxZTnDrYia_item').click(
+        function(obj){
+           var PowerBoxId = $('#HxZTnDrYia_item').attr('PowerBoxId');
+
+           if(PowerBoxId==undefined){
+              alert('没有选中设备');
+              return false;
+           }
+
+           $.post(server_ip+"/api/power/powerone",{PowerBoxId:PowerBoxId},function(data){  
+            $("#XojoDialogs").append("<div id='EhvgfUkd' class='sheet' style='display: block; visibility: visible; z-index: 34; opacity: 1; transition-property: opacity; transition-duration: 0.2s; transition-timing-function: ease-out;'><div id='EhvgfUkd_body' class='body' style='visibility: visible; top: 0px; transition-property: top; transition-duration: 0.2s; transition-timing-function: ease-out;'><div id='Frk4UdP5'><input class='tabWrapFirstField' style='visibility:visible;left:10000px;top:10000px;opacity:0;width:0px;height:0px;overflow:hidden;padding:0px;filter: alpha(opacity=0);-ms-filter:&#39;progid:DXImageTransform.Microsoft.Alpha(Opacity=0)&#39;;' id='Frk4UdP5_inner' type='text' readonly='readonly' autocomplete='on' autocorrect='on' autocapitalize='on'></div><div id='fqKpRcbE' onclick='hiddens()' style='opacity: 1 !important; visibility: visible;' class=''><img src='./images/dot_up.png' alt='' border='0' style='position: absolute; width: 16px; height: 16px; top: 50%; margin-top: -8px; left: 50%; margin-left: -8px;' id='fqKpRcbE_image' class='closedlg'></div><div style='text-align: right; opacity: 1 !important; visibility: visible;top: 45px;' id='JmzuhAkA'><div style='position: absolute; left: 0px; right: 0px; top: 50%; overflow: hidden; margin-top: -9px; height: 19px; max-height: 19px;' class=''><p style='margin: 0px;' class=''>设备编号</p></div></div><div style='text-align: right; opacity: 1 !important; visibility: visible;' id='o9eQfdFo'><div style='position: absolute; left: 0px; right: 0px; top: 50%; overflow: hidden; margin-top: -9px; height: 19px; max-height: 19px;' class=''><p style='margin: 0px;' class=''>设备备注</p></div></div><div style='display:none;text-align: right; opacity: 1 !important; visibility: visible;' id='R6szEpzC'><div style='position: absolute; left: 0px; right: 0px; top: 50%; overflow: hidden; margin-top: -9px; height: 19px; max-height: 19px;' class=''><p style='margin: 0px;' class=''>设备编码</p></div></div><div style='text-align: right; opacity: 1 !important; visibility: visible;' id='DZAQxAC6'><div style='position: absolute; left: 0px; right: 0px; top: 50%; overflow: hidden; margin-top: -9px; height: 19px; max-height: 19px;' class=''><p style='margin: 0px;' class=''>地址</p></div></div><div id='a9dUZ2yN' class='' style='visibility: visible;top: 45px;'><input id='a9dUZ2yN_inner' style='height:25px;background:#EEEEEE;' name='PowerBoxId' type='text' class='textcontrol' autocomplete='on' autocorrect='on' autocapitalize='on' value="+data['PowerBoxId']+" readonly='readonly'></div><div id='yzRhL0qT' class='' style='visibility: visible;'><input id='yzRhL0qT_inner' style='height:25px;' name='PowerBoxCode' type='hidden' class='textcontrol' autocomplete='on' autocorrect='on' autocapitalize='on' value="+data['PowerBoxCode']+"></div><div id='qjJqNeGD' class='' style='visibility: visible;'><input id='qjJqNeGD_inner' name='txtAddress' style='height:25px;' type='text' class='textcontrol' autocomplete='on'autocorrect='on' autocapitalize='on' value="+data['address']+"></div><div style='text-align: right; opacity: 1 !important; visibility: visible;' id='f5lVDL4N'><div style='position: absolute; left: 0px; right: 0px; top: 50%; overflow: hidden; margin-top: -9px; height: 19px; max-height: 19px;' class=''><p style='margin: 0px;' class=''>经度</p></div></div><div id='HMQAqjHk' class='' style='visibility: visible;'><input id='HMQAqjHk_inner' style='height:25px;' name='txtLon' type='number' class='textcontrol' autocomplete='on' autocorrect='on' autocapitalize='on' value="+data['lon']+"></div><div style='text-align: right; opacity: 1 !important; visibility: visible;' id='GcU1CtKu'><div style='position: absolute; left: 0px; right: 0px; top: 50%; overflow: hidden; margin-top: -9px; height: 19px; max-height: 19px;' class=''><p style='margin: 0px;' class=''>纬度</p></div></div><div id='HWwMqu1u' class='' style='visibility: visible;'><input id='HWwMqu1u_inner' style='height:25px;' name='txtLat' type='number' class='textcontrol' autocomplete='on' autocorrect='on' autocapitalize='on' value="+data['lat']+"></div><div style='text-align: right; opacity: 1 !important; visibility: visible;' id='wxIuXzt6'><div style='position: absolute; left: 0px; right: 0px; top: 50%; overflow: hidden; margin-top: -9px; height: 19px; max-height: 19px;' class=''><p style='margin: 0px;' class=''>高度</p></div></div><div style='display:none;text-align: right; opacity: 1 !important; visibility: visible;' id='Em3uKTqB'><div style='position: absolute; left: 0px; right: 0px; top: 50%; overflow: hidden; margin-top: -9px; height: 19px; max-height: 19px;' class=''><p style='margin: 0px;' class=''>楼层</p></div></div><div id='dg0SlEfA' class='' style='visibility: visible;'><input id='dg0SlEfA_inner' style='height:25px;' name='txtAlt' type='number' class='textcontrol' autocomplete='on'  autocorrect='on' autocapitalize='on' value="+data['alt']+"> </div><div id='d0n0hCtN' class='' style='visibility: visible;'><input id='d0n0hCtN_inner' name='txtFloor' style='height:25px;' type='hidden' class='textcontrol' autocomplete='on' autocorrect='on' autocapitalize='on' value="+data['floor']+"></div><div id='Ua0JUouU' style='visibility: visible;'><input id='Ua0JUouU_inner' name='btmSave' method='edit' onclick='save(this)' value='保存' type='button'></div><div id='Px0OckIy' class='' style='visibility: visible;'><textarea id='Px0OckIy_inner' name='txtNote' class='textcontrol' >"+data['note']+"</textarea></div><div id='oe2arfTk'><input style='visibility:visible;left:10000px;top:10000px;opacity:0;width:0px;height:0px;overflow:hidden;padding:0px;filter: alpha(opacity=0);-ms-filter:&#39;progid:DXImageTransform.Microsoft.Alpha(Opacity=0)&#39;;' id='oe2arfTk_inner' type='text' readonly='readonly' class='textcontrol _Style' autocomplete='on'  autocorrect='on' autocapitalize='on'></div><img id='EhvgfUkd_resize' class='resize' src='/images/palette_resize.png' width='15'  height='15' alt='' style='display: none;'></div> <div id='EhvgfUkd_anim' style='display: none; visibility: visible;'>&nbsp;</div></div>");
+            });
+        }
+    );
+
+    //删除设备 
+    $('#XU5YhKVeTl_item').click(
+        function(obj){
+           var PowerBoxId = $('#XU5YhKVeTl_item').attr('PowerBoxId');
+           if(confirm('确定要删除此设备吗？')){
+                if(PowerBoxId==undefined){
+                  alert('没有选中设备');
+                  return false;
+               }
+
+               $.post(server_ip+"/api/power/delpowerbox",{PowerBoxId:PowerBoxId},function(data){ 
+                    alert(data.message);
+                    if(data.code==200){
+                        window.location.reload();
+                    }
+
+               });
+            }
+            
+            
+        }
+    );
+
+    function hiddens(){
+        $("#XojoDialogs").empty();
+    };
+
+    //保存修改或新增的设备信息
+    function save(obj){
+        var PowerBoxId = $('#a9dUZ2yN_inner').val();
+        var PowerBoxCode = $('#yzRhL0qT_inner').val();
+        var address = $('#qjJqNeGD_inner').val();
+        var lon = $('#HMQAqjHk_inner').val();
+        var lat = $('#HWwMqu1u_inner').val();
+        var alt = $('#dg0SlEfA_inner').val();
+        var floor = $('#d0n0hCtN_inner').val();
+        var note = $('#Px0OckIy_inner').val();
+        var method= $(obj).attr('method');
+        if(PowerBoxId==''){
+            alert('设备编号不能为空');
+            return false;
+        }
+        if(address==''){
+            alert('地址不能为空');
+            return false;
+        }
+        $.post(server_ip+"/api/power/addpowerbox",{PowerBoxId:PowerBoxId,PowerBoxCode:PowerBoxCode,address:address,lon:lon,lat:lat,alt:alt,floor:floor,note:note,method:method},function(data){            
+                alert(data.message);
+                if(data.code==200){
+                    window.location.reload();
+                }
+
+        });
+    }
+    
+    //电源箱列表模块
+    function powerlist(data){
+        $('#park_device_list_userrows').empty();
+        $str = $("<tr class='' style='color:red'><td class='column1' style='min-height: 22px; height: 22px; width: 115px; min-width: 115px; max-width: 115px;'>共计："+data.total+"台设备</td><td class='column2' style='min-height: 22px; height: 22px; width: 80px; min-width: 80px; max-width: 80px;'><td class='column3' style='min-height: 22px; height: 22px; width: 105px; min-width: 105px; max-width: 105px;'>不在线："+data.notline_num+"台</td><td></td><td class='padder'>&nbsp;</td></tr>");
+        $('#park_device_list_userrows').append($str);
+        for (var i = 0; i <= data.power.length - 1; i++) {
+            var $tr = $("<tr class='' args="+data.power[i]['id']+" PowerBoxId="+data.power[i]['PowerBoxId']+" onclick=power(this)></tr>");
+            $('#park_device_list_userrows').append($tr);
+
+            var $td1=$('<td class="column1" style="min-height: 22px; height: 22px; width: 170px; min-width: 170px; max-width: 170px;">'+data.power[i]['PowerBoxId']+'</td>');
+            $tr.append($td1);
+            if(data.power[i]['online']=='在线' && data.power[i]['status']==1){
+                var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 80px; min-width: 80px; max-width: 80px;color:red;">'+data.power[i]['online']+'/异常'+'</td>');
+                $tr.append($td2);
+            }else{
+               var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 80px; min-width: 80px; max-width: 80px;">'+data.power[i]['online']+'</td>');
+               $tr.append($td2); 
+            }
+            
+            var $td3=$('<td class="column3" style="min-height: 22px; height: 22px; width: 70px; min-width: 70px; max-width: 70px;">'+data.power[i]['address']+'</td>');
+            $tr.append($td3);
+
+            var $td5=$('<td class="column4" style="min-height: 22px; height: 22px; ">'+data.power[i]['client_ip']+'</td>');
+            $tr.append($td5);
+
+            var $td4=$('<td class="padder">&nbsp;</td>');
+            $tr.append($td4);
+            
+        }
+    }
+
+    //电源箱详情模块调用方法
+    function powerinfo(data){
+        document.getElementById('mdWRzz8t_content').scrollTop = 0;
+        for (var i = 0; i <= 18; i++) {
+            if(i%2==0){
+                var $tr = $('<tr style="background-color: rgb(255, 255, 255);"></tr>');               
+                
+            }else{
+                var $tr = $('<tr style="background-color: rgb(237, 243, 254);"></tr>');
+            }
+            $('#mdWRzz8t_userrows').append($tr);
+            if(i==0){
+                var $td1=$('<td class="column1" style="min-height: 22px; height: 22px; width: 135px; min-width: 135px; max-width: 135px;">设备编号</td>');
+                $tr.append($td1);
+                var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;">'+data['PowerBoxId']+'</td>');
+                $tr.append($td2);
+                var $td3=$('<td class="padder" style=""></td>');
+                $tr.append($td3); 
+                                                  
+            }else if(i==1){               
+                var $td1=$('<td class="column1" style="min-height: 22px; height: 22px; width: 135px; min-width: 135px; max-width: 135px;">电压12v</td>');
+                $tr.append($td1);
+                
+                if(data.status.V12_status==1){
+                    var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;color:red;">'+data['V_12']+'/异常</td>');
+                }else{
+                    var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;">'+data['V_12']+'</td>');
+                }
+
+                $tr.append($td2); 
+                var $td3=$('<td class="padder" style="width:130px;"><input style="width:50px;" type="submit" name="V_12" PowerBoxId='+data['PowerBoxId']+' onclick="submit_control(this)" value='+data['V12_handle']+' /></td>');
+                $tr.append($td3);                  
+            }else if(i==2){                
+                var $td1=$('<td class="column1" style="min-height: 22px; height: 22px; width: 135px; min-width: 135px; max-width: 135px;">电压24v</td>');
+                $tr.append($td1);
+                
+                if(data.status.V24_status==1){
+                    var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;color:red;">'+data['V_24']+'/异常</td>');
+                }else{
+                    var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;">'+data['V_24']+'</td>');
+                }
+                $tr.append($td2); 
+                var $td3=$('<td class="padder" style=""><input style="width:50px;" type="submit" name="V_24" PowerBoxId='+data['PowerBoxId']+' onclick="submit_control(this)" value='+data['V24_handle']+' /></td>');
+                $tr.append($td3);                 
+            }else if(i==3){               
+                var $td1=$('<td class="column1" style="min-height: 22px; height: 22px; width: 135px; min-width: 135px; max-width: 135px;">电压220v</td>');
+                $tr.append($td1);
+               
+                if(data.status.V220_status==1){
+                    var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;color:red;">'+data['V_220']+'/异常</td>');
+                }else{
+                    var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;">'+data['V_220']+'</td>');
+                }
+                $tr.append($td2); 
+                var $td3=$('<td class="padder" style=""><input style="width:50px;" type="submit" name="V_220" PowerBoxId='+data['PowerBoxId']+' onclick="submit_control(this)" value='+data['V220_handle']+' /></td>');
+                $tr.append($td3);                      
+            }else if(i==4){
+                var $td1=$('<td class="column1" style="min-height: 22px; height: 22px; width: 135px; min-width: 135px; max-width: 135px;">'+data['powerBoxput']['output1']+'</td>');
+                             
+                $tr.append($td1);
+                var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;">'+data['Output_First']+'</td>');
+                $tr.append($td2); 
+                var $td3=$('<td class="padder" style=""><input style="width:50px;" type="submit" name="Output_First" PowerBoxId='+data['PowerBoxId']+' onclick="submit_control(this)" value='+data['OFirst_handle']+' /></td>');
+                $tr.append($td3);                      
+            }else if(i==5){
+                var $td1=$('<td class="column1" style="min-height: 22px; height: 22px; width: 135px; min-width: 135px; max-width: 135px;">'+data['powerBoxput']['output2']+'</td>');
+                
+                $tr.append($td1);
+                var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;">'+data['Output_Second']+'</td>');
+                $tr.append($td2); 
+                var $td3=$('<td class="padder" style=""><input style="width:50px;" type="submit" name="Output_Second" PowerBoxId='+data['PowerBoxId']+' onclick="submit_control(this)" value='+data['OSecond_handle']+' /></td>');
+                $tr.append($td3);                      
+            }else if(i==6){
+                var $td1=$('<td class="column1" style="min-height: 22px; height: 22px; width: 135px; min-width: 135px; max-width: 135px;">'+data['powerBoxput']['output3']+'</td>');
+                
+                $tr.append($td1);
+                var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;">'+data['Output_Third']+'</td>');
+                $tr.append($td2); 
+                var $td3=$('<td class="padder" style=""><input style="width:50px;" type="submit" name="Output_Third" PowerBoxId='+data['PowerBoxId']+' onclick="submit_control(this)" value='+data['OThird_handle']+' /></td>');
+                $tr.append($td3);                      
+            }else if(i==7){
+                var $td1=$('<td class="column1" style="min-height: 22px; height: 22px; width: 135px; min-width: 135px; max-width: 135px;">'+data['powerBoxput']['output4']+'</td>');
+                
+                $tr.append($td1);
+                var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;">'+data['Output_Fourth']+'</td>');
+                $tr.append($td2); 
+                var $td3=$('<td class="padder" style=""><input style="width:50px;" type="submit" name="Output_Fourth" PowerBoxId='+data['PowerBoxId']+' onclick="submit_control(this)" value='+data['OFourth_handle']+' /></td>');
+                $tr.append($td3);                      
+                                 
+            }else if(i==8){
+                var $td1=$('<td class="column1" style="min-height: 22px; height: 22px; width: 135px; min-width: 135px; max-width: 135px;">'+data['powerBoxput']['input1']+'</td>');
+                
+                $tr.append($td1);
+                if(data.status.ElectricalFirst_status==1){
+                    var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;color:red;">异常</td>');
+                }else{
+                    var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;">正常</td>');
+                }
+                $tr.append($td2); 
+                var $td3=$('<td class="padder" style=""></td>');
+                $tr.append($td3);                      
+            }else if(i==9){
+                var $td1=$('<td class="column1" style="min-height: 22px; height: 22px; width: 135px; min-width: 135px; max-width: 135px;">'+data['powerBoxput']['input2']+'</td>');
+                
+                $tr.append($td1);
+                if(data.status.ElectricalSecond_status==1){
+                    var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;color:red;">异常</td>');
+                }else{
+                    var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;">正常</td>');
+                }
+                
+                $tr.append($td2); 
+                var $td3=$('<td class="padder" style=""></td>');
+                $tr.append($td3);                      
+            }else if(i==10){
+                var $td1=$('<td class="column1" style="min-height: 22px; height: 22px; width: 135px; min-width: 135px; max-width: 135px;">'+data['powerBoxput']['input3']+'</td>');
+                
+                $tr.append($td1);
+                if(data.status.ElectricalThird_status==1){
+                    var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;color:red;">异常</td>');
+                }else{
+                    var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;">正常</td>');
+                }
+                $tr.append($td2); 
+                var $td3=$('<td class="padder" style=""></td>');
+                $tr.append($td3);                      
+            }else if(i==11){
+                var $td1=$('<td class="column1" style="min-height: 22px; height: 22px; width: 135px; min-width: 135px; max-width: 135px;">'+data['powerBoxput']['input4']+'</td>');
+                
+                $tr.append($td1);
+                if(data.status.ElectricalFourth_status==1){
+                    var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;color:red;">异常</td>');
+                }else{
+                    var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;">正常</td>');
+                }
+                $tr.append($td2); 
+                var $td3=$('<td class="padder" style=""></td>');
+                $tr.append($td3);                      
+            }else if(i==12){               
+                var $td1=$('<td class="column1" style="min-height: 22px; height: 22px; width: 135px; min-width: 135px; max-width: 135px;">12v防雷器</td>');
+                $tr.append($td1);
+                if(data.status.LightingV12_status==1){
+                    var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;color:red;">异常</td>');
+                }else{
+                    var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;">正常</td>');
+                }
+                $tr.append($td2); 
+                var $td3=$('<td class="padder" style=""></td>');
+                $tr.append($td3);                      
+            }else if(i==13){               
+                var $td1=$('<td class="column1" style="min-height: 22px; height: 22px; width: 135px; min-width: 135px; max-width: 135px;">24v防雷器</td>');
+                $tr.append($td1);
+                if(data.status.LightingV24_status==1){
+                    var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;color:red;">异常</td>');
+                }else{
+                    var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;">正常</td>');
+                }
+                $tr.append($td2); 
+                var $td3=$('<td class="padder" style=""></td>');
+                $tr.append($td3);                      
+            }else if(i==14){               
+                var $td1=$('<td class="column1" style="min-height: 22px; height: 22px; width: 135px; min-width: 135px; max-width: 135px;">220v防雷器</td>');
+                $tr.append($td1);
+                if(data.status.LightingV220_status==1){
+                    var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;color:red;">异常</td>');
+                }else{
+                    var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;">正常</td>');
+                }
+                $tr.append($td2); 
+                var $td3=$('<td class="padder" style=""></td>');
+                $tr.append($td3);                      
+            }else if(i==15){                
+                var $td1=$('<td class="column1" style="min-height: 22px; height: 22px; width: 135px; min-width: 135px; max-width: 135px;">温度</td>');
+                $tr.append($td1);
+                var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;">'+data['temperature']+'</td>');
+                $tr.append($td2);
+                var $td3=$('<td class="padder" style=""></td>');
+                $tr.append($td3);                         
+            }else if(i==16){                
+                var $td1=$('<td class="column1" style="min-height: 22px; height: 22px; width: 135px; min-width: 135px; max-width: 135px;">湿度</td>');
+                $tr.append($td1);
+                var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;">'+data['humidity']+'</td>');
+                $tr.append($td2);
+                var $td3=$('<td class="padder" style=""></td>');
+                $tr.append($td3);                        
+            }else if(i==17){               
+                var $td1=$('<td class="column1" style="min-height: 22px; height: 22px; width: 135px; min-width: 135px; max-width: 135px;">经度</td>');
+                $tr.append($td1);
+                var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;">'+data['lon']+'</td>');
+                $tr.append($td2); 
+                var $td3=$('<td class="padder" style=""></td>');
+                $tr.append($td3);                       
+            }else if(i==18){                
+                var $td1=$('<td class="column1" style="min-height: 22px; height: 22px; width: 135px; min-width: 135px; max-width: 135px;">纬度</td>');
+                $tr.append($td1);
+                var $td2=$('<td class="column2" style="min-height: 22px; height: 22px; width: 195px; min-width: 195px; max-width: 195px;">'+data['lat']+'</td>');
+                $tr.append($td2);
+                var $td3=$('<td class="padder" style=""></td>');
+                $tr.append($td3);   
+            }
+            
+        }
+    }
+
+    //事件列表模块调用方法
+    function power_event(data){
+        document.getElementById('DjJyFTbh_content').scrollTop = 0;
+        $('#DjJyFTbh_userrows').empty();
+        $('.event_total').html(data.total);
+        for (var i = 0; i <= data.list.length - 1; i++) {
+            if(data.list[i].is_read==2 || data.list[i]['eventCode']==23 ||data.list[i]['eventCode']==24 ||data.list[i]['eventCode']==25 ||data.list[i]['eventCode']==26 ||data.list[i]['eventCode']==27){
+                var $str = $("<tr args="+data.list[i]['id']+" style='background-color:#fc0606;color:#fff;'></tr>");
+            }else{
+               var $str = $("<tr args="+data.list[i]['id']+"></tr>"); 
+            }
+            
+            $('#DjJyFTbh_userrows').append($str);
+
+            var $std1=$('<td class="column1" style="min-height: 22px; height: 22px;width:230px;">'+data.list[i]['triggerTime']+'</td>');
+            $str.append($std1);
+
+            var $std2=$('<td class="column2" style="min-height: 22px; height: 22px;width:260px;">'+data.list[i]['note']+'</td>');
+            $str.append($std2);
+
+            var $std3=$('<td class="column3" style="min-height: 22px; height: 22px;width: 230px;">'+data.list[i]['PowerBoxId']+'</td>');
+            $str.append($std3);
+
+            var $std4=$('<td class="column4" style="min-height: 22px; height: 22px;">'+data.list[i]['address']+'</td>');
+            $str.append($std4);
+
+            var $std5=$('<td id="padder">&nbsp;</td>');
+            $str.append($std5);
+        }
+    }
+
+    //心跳列表模块调用方法
+    function power_heart(data){
+        $('#qMKbqexo_userrows').empty();
+        $('.heart_total').html(data.length);
+        for (var i = 0; i <= data.length - 1; i++) {
+            
+            var $str = $("<tr args="+data[i]['id']+"></tr>");               
+            $('#qMKbqexo_userrows').append($str);
+
+            var $std1=$('<td class="column1" style="width: 250px; min-width: 250px; max-width: 250px; ">'+data[i]['PowerBoxId']+'</td>');
+            $str.append($std1);
+
+            var $std2=$('<td class="column2" style="width: 220px; min-width: 220px; max-width: 220px; ">'+data[i]['heartTime']+'</td>');
+            $str.append($std2);
+
+            var $std3=$('<td class="padder">&nbsp;</td>');
+            $str.append($std3);
+        }
+    }
+
+    //统计事件未读取的数量
+    function powerevent_total() {
+        var url = server_ip+"/api/power/eventtotal";
+            　　
+        $.get(url,null,function(data) {
+            　　　　　　              
+            // 这里写提醒的方式
+            $('#badge').html(data.total);
+
+            if(data.isnews==1){
+                $('.box').css('display','block');
+                setTimeout(function(){
+                    $('.box').css('display','none');
+                },2000);
+            }
+           
+        });
+
+        // 每30秒请求一次
+        setTimeout('powerevent_total()',20000);
+    }
+
+
+    /*点击弹出按钮并查询最新的事件消息*/
+    function popBox(obj) {
+        var is_read =0;
+        if($(obj).attr('is_read')==1){
+            var is_read=1;
+        }
+        $('#xiaoxi_news').empty();
+        $.get(server_ip+'/api/power/getnews',{is_read:is_read},function(data) {
+            
+            for (var i = 0; i <= data.length - 1; i++) {     
+                var num = i+1;       
+                var $str = $('<li onclick="click_event(this)" powerid='+data[i].id+'><a href="#">'+num+'、'+data[i].triggerTime+' '+data[i].eventCode+'</a></li>');               
+                $('#xiaoxi_news').append($str);
+                
+            }
+            if(is_read==1){
+                $('#badge').html(0);
+            }
+            
+        });
+
+        $('#popBox').css('display','block');
+        $('#popLayer').css('display','block');
+       
+    };
+
+    function click_event(obj){
+        var powerid=$(obj).attr('powerid');
+        $.post(server_ip+"/api/power/getevent",{page:1,id:powerid},function(data){
+            var divValue = $("#badge").html();
+            if(divValue>0){
+                divValue = divValue-1;
+                $('#badge').html(divValue);
+            }
+            power_event(data);
+        });
+
+    }
+ 
+    /*点击关闭按钮*/
+    function closeBox() {
+        $('#popBox').css('display','none');
+        $('#popLayer').css('display','none');
+    }
+
+    
+    function click_output(){
+        var dis = $('#inout').css('display');
+        if(dis=='block'){
+            $('#inout').css('display','none');
+        }else{
+            $('#inout').css('display','block');
+            //获取输入输出口的定义内容
+            $.post(server_ip+'/api/power/powerboxput',{type:1},function(data){
+                if(data.putinfo!=''){
+                    $('#input1').val(data.putinfo['input1']);
+                    $('#input2').val(data.putinfo['input2']);
+                    $('#input3').val(data.putinfo['input3']);
+                    $('#input4').val(data.putinfo['input4']);
+                    $('#output1').val(data.putinfo['output1']);
+                    $('#output2').val(data.putinfo['output2']);
+                    $('#output3').val(data.putinfo['output3']);
+                    $('#output4').val(data.putinfo['output4']);
+                }
+
+            });
+        }
+    }
+
+    function click_report(){
+        var dis = $('#report_set').css('display');
+        if(dis=='block'){
+            $('#report_set').css('display','none');
+        }else{
+            $('#report_set').css('display','block');
+            //获取输入输出口的定义内容
+            $.post(server_ip+'/api/power/powerreport',{type:1},function(data){
+                if(data.reportinfo!=''){
+                    $('#V12_report').val(data.reportinfo['V12_report']);
+                    $('#V24_report').val(data.reportinfo['V24_report']);
+                    $('#V220_report').val(data.reportinfo['V220_report']);
+                    $('#V12_scope').val(data.reportinfo['V12_scope']);
+                    $('#V24_scope').val(data.reportinfo['V24_scope']);
+                    $('#V220_scope').val(data.reportinfo['V220_scope']);
+                    $('#temperature_report').val(data.reportinfo['temperature_report']);
+                    $('#humidity_report').val(data.reportinfo['humidity_report']);
+                    $('#temperature_scope').val(data.reportinfo['temperature_scope']);
+                    $('#humidity_scope').val(data.reportinfo['humidity_scope']);
+                }
+
+            });
+        }
+    }
+
+    function click_system(){
+        var dis = $('#system_set').css('display');
+        if(dis=='block'){
+            $('#system_set').css('display','none');
+        }else{
+            $('#system_set').css('display','block');
+            //获取输入输出口的定义内容
+            $.post(server_ip+'/api/power/powersystem',{type:1},function(data){
+                if(data.systeminfo!=''){
+                    $('#ServerId').val(data.systeminfo['Server_id']);
+                    $('#server_address').val(data.systeminfo['address']);
+                    
+                }
+
+            });
+        }
+    }
+
+
+    $('#put_image').click(function(){
+        $('#inout').css('display','none');
+    });
+
+    $('#report_image').click(function(){
+        $('#report_set').css('display','none');
+    });
+
+    $('#system_image').click(function(){
+        $('#system_set').css('display','none');
+    });
+
+    // 保存输入输出口设置
+    function save_put(){
+        var input1 = $('#input1').val();
+        var input2 = $('#input2').val();
+        var input3 = $('#input3').val();
+        var input4 = $('#input4').val();
+        var output1 = $('#output1').val();
+        var output2 = $('#output2').val();
+        var output3 = $('#output3').val();
+        var output4 = $('#output4').val();
+
+        $.post(server_ip+'/api/power/powerboxput',{type:2,input1:input1,input2:input2,input3:input3,input4:input4,output1:output1,output2:output2,output3:output3,output4:output4},function(data){
+                if(data.status=='success'){
+                    alert('保存成功');
+                }
+
+            });
+
+    }   
+
+    // 保存报警值的设置
+    function save_report(){
+        var V12_report = $('#V12_report').val();
+        var V24_report = $('#V24_report').val();
+        var V220_report = $('#V220_report').val();
+        var V12_scope = $('#V12_scope').val();
+        var V24_scope = $('#V24_scope').val();
+        var V220_scope = $('#V220_scope').val();
+        var temperature_report = $('#temperature_report').val();
+        var humidity_report = $('#humidity_report').val();
+        var temperature_scope = $('#temperature_scope').val();
+        var humidity_scope = $('#humidity_scope').val();
+
+        $.post(server_ip+'/api/power/powerreport',{type:2,V12_report:V12_report,V24_report:V24_report,V220_report:V220_report,V12_scope:V12_scope,V24_scope:V24_scope,V220_scope:V220_scope,temperature_report:temperature_report,humidity_report:humidity_report,temperature_scope:temperature_scope,humidity_scope:humidity_scope},function(data){
+                if(data.status=='success'){
+                    alert('保存成功');
+                }
+
+            });
+
+    } 
+
+    // 保存服务器平台的设置
+    function save_server(){
+        var ServerId = $('#ServerId').val();
+        var server_address = $('#server_address').val();
+        if(ServerId==''){
+            alert('服务器必须设置id');
+            return;
+        }
+
+        if(server_address==''){
+            alert('服务器必须设置地址');
+            return;
+        }
+        $.post(server_ip+'/api/power/powersystem',{type:2,Server_id:ServerId,address:server_address},function(data){
+                if(data.status=='success'){
+                    alert('保存成功');
+                }
+
+            });
+
+    }    
+    
+
+</script>
+
+<script language="JavaScript">
+// 饼状图统计设备和报警事件
+function pie(title,series,contai) {  
+   var chart = {
+       plotBackgroundColor: null,
+       plotBorderWidth: null,
+       plotShadow: false,
+       width:400,
+       height:400
+   };
+   var credits = {
+        enabled:true,
+        href:'',
+        text:'上海跃天',
+   };
+   
+   Highcharts.setOptions({
+      colors: ['#058DC7', '#888888', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655',
+    '#FFF263', '#6AF9C4']
+   });     
+   var tooltip = {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+   };
+   var plotOptions = {
+      pie: {
+         allowPointSelect: true,
+         cursor: 'pointer',
+         dataLabels: {
+            enabled: true,
+            format: '<b>{point.name}%</b>: {point.percentage:.1f} %',
+            style: {
+               color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+            }
+         }
+      }
+   };
+     
+      
+   var json = {};   
+   json.chart = chart;
+   json.credits = credits;
+   json.title = title;     
+   json.tooltip = tooltip;  
+   json.series = series;
+   json.plotOptions = plotOptions;
+   $(contai).highcharts(json);  
+};
+
+$(document).ready(function(){
+    $.get(server_ip+"/api/power/powercensus",{},function(datas){
+        var title = {
+          text: '电源箱统计'   
+        }; 
+        var series= [{
+          type: 'pie',
+          name: 'Browser share',
+          data: [
+             ['在线',   datas.on_percen],
+             ['不在线', datas.off_percen],
+          ]
+        }];  
+        // var title2 = {
+        //   text: '报警事件统计'   
+        // }; 
+       
+        // var series2= [{
+        //   type: 'pie',
+        //   name: 'Browser share',
+        //   data: [
+        //      ['12v没电压报警',   10.2],
+        //      ['24v没电压报警',       20.8],
+        //      ['220v没电压报警',   19.0],
+        //      ['12v电压报警解除',       10.2],
+        //      ['24v电压报警解除',   20.8],
+        //      ['220v电压报警解除',       19.0],
+            
+        //   ]
+        // }];   
+        pie(title,series,'#container');
+
+        // pie(title2,series2,'#container2');
+    });
+});
+</script>
+</body>
+</html>

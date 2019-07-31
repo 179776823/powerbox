@@ -1,0 +1,122 @@
+.tree,
+.notree {
+	margin: 5px 0px;
+	overflow: auto;
+	position: relative;
+	// width: 304px;
+	font-size: 14px;
+}
+.ckbox,
+.treeckbox {
+	margin-top: 10px;
+	height: 200px;
+	overflow: auto;
+	position: relative; //为了在ie上的overflow是有效的
+	// width: 358px;
+	font-size: 14px;
+}
+.tree .collapse,
+.tree .expand,
+.tree .none,
+.treeckboxins .collapse,
+.treeckboxins .expand,
+.treeckboxins .none,
+.treeckbox .collapse,
+.treeckbox .expand,
+.treeckbox .none {
+	background-image: url(../../images/jol4_new.png);
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+	background-position: 0px -511px;
+	position: absolute;
+	top: 2px;
+	left: 0px;
+}
+.tree .expand,
+.treeckboxins .expand,
+.treeckbox .expand {
+	background-position: 0px -485px;
+}
+.tree .none,
+.treeckboxins .none,
+.treeckbox .none {
+	background: #fff;
+	width: auto;
+}
+.tree ul,
+.treeckboxins ul {
+	padding-left: 13px;
+}
+.ckbox ul,
+.treeckbox ul {
+	padding-left: 20px;
+}
+.tree li,
+.notree li,
+.ckbox li,
+.treeckboxins li,
+.treeckbox li {
+	position: relative;
+	zoom: 1;
+	white-space: nowrap;
+}
+.tree .icon-ck,
+.notree .icon-ck,
+.ckbox .icon-ck {
+	width: auto;
+	padding-left: 18px;
+	color: #595959;
+	margin-bottom: 5px;
+}
+.tree .icon-ck {
+	background: #fff;
+	cursor: pointer;
+}
+.notree .icon-ck {
+	background: #fff;
+	padding-left: 0px;
+	cursor: pointer;
+}
+.ckbox .icon-ck {
+	padding-left: 20px;
+}
+.treeckbox .icon-ck,
+.treeckbox .icon-ckon,
+.treeckbox .icon-ckhalf {
+	padding-left: 40px;
+	color: #595959;
+	height: 20px;
+	line-height: 20px;
+	width: auto;
+	background-position: 19px 2px;
+}
+.treeckbox .icon-ckon {
+	background-position: 19px -76px;
+}
+.treeckbox .icon-ckhalf {
+	background-position: 19px -24px;
+}
+.treeckboxins .icon-ck,
+.treeckboxins .icon-ckon,
+.treeckboxins .icon-ckhalf {
+	background-position: 0 0;
+	left: 19px;
+	top: 2px;
+	position: absolute;
+}
+.treeckboxins .icon-ckon {
+	background-position: 0px -78px;
+}
+.treeckboxins .icon-ckhalf {
+	background-position: 0px -26px;
+}
+
+.tree span.law {
+  line-height: 20px;
+  height: 20px;
+  padding: 0 2px;
+  color: #595959;
+  padding-left: 18px;
+  font-size: 14px;
+}

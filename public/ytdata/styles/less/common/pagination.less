@@ -1,0 +1,135 @@
+.pagination{
+    zoom:1;
+    z-index:99;
+    position:relative;
+    border:1px solid #d9d9d9;
+    padding: 8px 10px 8px 10px;
+}
+.pagination .ckstyle {
+    width:430px;
+}
+.pagination .ckstyle a{
+    margin-right:10px;
+}
+.pagination .num{
+    line-height:17px;
+}
+.pagination .num a {
+    color:#008bbb;
+    text-align:center;
+    vertical-align: top;
+    &:hover{
+        text-decoration:underline;
+    }
+    &.on{
+        color: #690;
+        cursor: default;
+        font-weight: bold;
+        text-decoration: none;
+    }
+}
+.sortbywrap{
+    top:9px;
+    left:120px;
+    // position:absolute;
+}
+.sortbywrap .tips{
+    margin-right:15px;
+}
+.sortbywrap .sortby{
+    z-index:88;
+    height:24px;
+    color: #008bbb;
+    cursor: pointer;
+    position: relative;
+    display:inline-block;
+}
+.sortbywrap .sortby a{
+    margin: 0;
+    color: #00b0f0;
+    display: block;
+    padding: 3px 9px;
+    text-decoration: none;
+    &:hover{
+        color:#fff;
+        background:#00b0f0;
+    }
+}
+.sortbywrap .sortby .sortbyp{
+    top: 24px;
+    left: -10px;
+    width: 85px;
+    display: none;
+    background: #fff;
+    line-height: 17px;
+    position: absolute;
+    border: 1px solid #d9d9d9;
+}
+.sortbywrap .on .sortbyp{
+    display:block;
+}
+
+.paging{
+    padding: 20px 0 15px 128px;
+}
+
+.paging a{
+    color:#008bbb;
+    &:hover{
+        text-decoration:underline;
+    }
+}
+
+.paging .fr{
+    color: #959595;
+    padding-right: 30px;
+}
+
+.paging .off,
+.paging .off:hover {
+    color:gray;
+    cursor:default;
+    text-decoration:none;
+}
+.paging .on,
+.paging .on:hover {
+    color: #690;
+    cursor: default;
+    text-decoration:none;
+}
+
+
+.pagination {
+    border:0px;
+    padding: 10px;
+    >div{
+      display:inline;
+      margin-left: 20px;
+      >a{
+        text-align: center;
+        vertical-align: middle;
+        &.on{
+          color:#ccc;
+        }
+      }
+    }
+
+    .arrowl{
+      background: url(../../images/jol4_new.png?v=1461290902388) left -1399px no-repeat;
+      width:16px;
+      height:16px;
+      display:inline-block;
+      &.off{
+         background-position: 0 -1373px;
+      }
+    }
+    .arrowr{
+      background: url(../../images/jol4_new.png?v=1461290902388) left -1168px no-repeat;
+      width:16px;
+      height:16px;
+      display:inline-block;
+      &.off{
+         background-position: 0 -1142px;
+      }
+    }
+  }
